@@ -1,5 +1,5 @@
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/ScRiPtsTerS/Kavo-Lib/main/gayv2"))()
-local Window = Library.CreateLib("GigaHub", THEMES)
+local Window = Library.CreateLib("GigaHub", _G.THEMES)
 print("GigaHub Loaded :)")
 print("Credits: ummidk(dripkage)#2417 <-- discord")
 print("Supported Games: BedWars, FlagWars, Rebirth Champions X, Tapping Legends X, Chinese freebie game, Tai Verdes Concert, Islands of Move, Mansion of Wonder, 24kGoldn Concert, Race Clicker, and Big PaintBall")
