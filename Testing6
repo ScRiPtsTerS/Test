@@ -1,7 +1,8 @@
-local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/ScRiPtsTerS/KavoTest/main/kavotest8"))()
-local Window = Library.CreateLib("GigaHub", _G.THEMES)
-print("GigaHub Loaded :)")
-print("Credits: ummidk(dripkage)#2417 <-- discord")
+        local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/ScRiPtsTerS/KavoTest/main/kavotest8"))()
+        local Notification = loadstring(game:HttpGet("https://raw.githubusercontent.com/Jxereas/UI-Libraries/main/notification_gui_library.lua", true))()
+        local Window = Library.CreateLib("GigaHub", _G.THEMES)
+        print("GigaHub Loaded :)")
+        print("Credits: ummidk(dripkage)#2417 <-- discord")
         
         --[[
         
@@ -50,7 +51,7 @@ print("Credits: ummidk(dripkage)#2417 <-- discord")
             local Discord = Window:NewTab("Discord")
             local MainDiscord = Discord:NewSection("Discord link")
             MainDiscord:NewButton("Copy link", "copys Dicord server link", function ()
-                Notification.new("info", "Discord", "Dicord server is copied to clipboard!")
+                Notification.new("info", "Discord", "Dicord server is copied to clipboard!", true, 3)
                 setclipboard("https://discord.gg/vNwA3gZP3T")
             end)
         end
