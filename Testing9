@@ -2706,6 +2706,7 @@ print(gameid)
 -- Incase they execute script again and both emojis were nil or not there
 getgenv().Hub_Emoji = nil
 getgenv().Notifi_Emoji = nil
+getgenv().ThemeSelect = nil
 print("🔨📜")
 print("Both Emojis have been reset.")
 print("Incase Emojis get glitched.")
