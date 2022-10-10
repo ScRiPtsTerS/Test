@@ -1,6 +1,25 @@
+---------------------------------------------------------------------------------------------------------------------------------------
+-- Customize Features
+
+-- Hub Emoji
+Emoji = getgenv().Hub_Emoji
+-- if they don't put any thing for Hub Emoji
+if getgenv().Hub_Emoji == nil then
+    Emoji = "🔥"
+end
+
+-- Notification Emoji
+getgenv().Emoji = getgenv().Notifi_Emoji
+-- If they don't put any thing for Notification Emoji
+if getgenv().Notifi_Emoji == nil then
+    getgenv().Emoji = "✅"
+end
+---------------------------------------------------------------------------------------------------------------------------------------
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/ScRiPtsTerS/KavoTest/main/kavotest8"))()
 local Notification = loadstring(game:HttpGet("https://raw.githubusercontent.com/Jxereas/UI-Libraries/main/notification_gui_library.lua", true))()
-local Window = Library.CreateLib("GigaHub", getgenv().THEMES)
+local Window = Library.CreateLib("GigaHub "..Emoji, getgenv().THEMES)
+
+getgenv().Supported = false
 print("GigaHub Loaded :)")
 print("Credits: ummidk(dripkage)#2417 <-- discord")
 
@@ -19,6 +38,17 @@ print("Credits: ummidk(dripkage)#2417 <-- discord")
 ---------------------------------------------------------------------------------------------------------------------------------------  
 -- Functions
 
+-- Game Supported
+function GameSup()
+    getgenv().Supported = true
+end
+
+-- Destroy Gui
+function Destroy()
+    game:GetService("CoreGui").infinfinf:Destroy() -- infinfinf = name of gui
+end
+
+-- Supported Games Tab
 function SupportedGames()
     local SupportedGames = Window:NewTab("Supported Games!!!")
     local MainSupportedGames = SupportedGames:NewSection("Games")
@@ -37,6 +67,7 @@ function SupportedGames()
     MainSupportedGames:NewLabel("type /console")
 end
 
+-- Toggle Gui
 function ToggleGui()
     -- Toggle Gui Window
     local Toggle = Window:NewTab("Toggle UI")
@@ -44,18 +75,21 @@ function ToggleGui()
     -- Toggle Gui Button
     MainToggle:NewKeybind("Toggle UI", "Self Explains", Enum.KeyCode.K, function()
         Library:ToggleUI()
+        Notification.new("info", "Toggled Gui", "You Just Toggled the Gui "..getgenv().Emoji, true, 3)
     end)
 end
 
+-- Discord Button
 function JoinDiscord()
     local Discord = Window:NewTab("Discord")
     local MainDiscord = Discord:NewSection("Discord link")
     MainDiscord:NewButton("Copy link", "copys Dicord server link", function ()
-        Notification.new("info", "Discord", "Dicord server is copied to clipboard!", true, 3)
+        Notification.new("info", "Discord", "Dicord server is copied to clipboard! "..getgenv().Emoji, true, 3)
         setclipboard("https://discord.gg/vNwA3gZP3T")
     end)
 end
 
+-- Prints Supported games
 function PrintGames()
     print("All Supported Games are loading")
     print("Supported Games: BedWars,")
@@ -89,7 +123,6 @@ function PrintGames()
     print(".")
     wait(0.1)
     print("...")
-    wait(0.5)
     wait(1)
     print("All Supported Games Loaded")
 end
@@ -252,6 +285,8 @@ end
 
 -- Actual Script
 if game.PlaceId == 3214114884 then
+        GameSup()
+        Notification.new("info", "Game: FlagWars", "Enjoy Hacking "..getgenv().Emoji, true, 3)
         local FlagWars = Window:NewTab("FlagWars")
         local MainFlagWars = FlagWars:NewSection("Kill")
         MainFlagWars:NewButton("Kill All 'PATCHED' ", "Equip the sniper", function()
@@ -294,6 +329,8 @@ if game.PlaceId == 3214114884 then
 end
 ---------------------------------------------------------------------------------------------------------------------------------------
 if game.PlaceId == 7619937171 then
+    GameSup()
+    Notification.new("info", "Game: Tai Verdes Concert", "Enjoy Hacking "..getgenv().Emoji, true, 3)
     local Freebies5 = Window:NewTab("Tai Verdes Concert")
     local MainFreebies5 = Freebies5:NewSection("Freebies")
 
@@ -319,6 +356,8 @@ if game.PlaceId == 7619937171 then
 end
 ---------------------------------------------------------------------------------------------------------------------------------------
 if game.PlaceId == 8967359816 then
+    GameSup()
+    Notification.new("info", "Game: 24kGoldn Concert", "Enjoy Hacking "..getgenv().Emoji, true, 3)
     local Freebies4 = Window:NewTab("24kGoldn Concert")
     local MainFreebies4 = Freebies4:NewSection("Freebies")
 
@@ -332,6 +371,8 @@ if game.PlaceId == 8967359816 then
 end
 ---------------------------------------------------------------------------------------------------------------------------------------
 if game.PlaceId == 5306359293 then
+    GameSup()
+    Notification.new("info", "Islands of Move", "Enjoy Hacking "..getgenv().Emoji, true, 3)
     local Freebies3 = Window:NewTab("islands of Move")
     local MainFreebies3 = Freebies3:NewSection("Freebies")
 
@@ -379,6 +420,8 @@ if game.PlaceId == 5306359293 then
 end
 ---------------------------------------------------------------------------------------------------------------------------------------
 if game.PlaceId == 6901029464 then
+    GameSup()
+    Notification.new("info", "Game: Mansion of Wonder", "Enjoy Hacking "..getgenv().Emoji, true, 3)
     local Freebies2 = Window:NewTab("Mansion of Wonder")
     local MainFreebies2 = Freebies2:NewSection("Freebies")
 
@@ -420,6 +463,8 @@ if game.PlaceId == 6901029464 then
 end
 ---------------------------------------------------------------------------------------------------------------------------------------
 if game.PlaceId == 7541759836 then
+    GameSup()
+    Notification.new("info", "Game: 凹凸世界：自由丛林", "Enjoy Hacking "..getgenv().Emoji, true, 3)
     local Freebies = Window:NewTab("Chinese Freebies game")
     local MainFreebies = Freebies:NewSection("Inf Credits")
 
@@ -433,305 +478,313 @@ if game.PlaceId == 7541759836 then
 end
 ---------------------------------------------------------------------------------------------------------------------------------------
 if game.PlaceId == 8540346411 then
-    local RebirthX = Window:NewTab("Rebirth Champions X")
-    local MainRebirthX = RebirthX:NewSection("Auto Settings")
+    GameSup()
+    Notification.new("info", "Game: Rebirth Legends X", "Enjoy Hacking "..getgenv().Emoji, true, 3)
+    local RebirthX = Window:NewTab("Main")
+    local MainRebirthX = RebirthX:NewSection("Main Stuff")
 
     MainRebirthX:NewToggle("Auto Tap", "Taps for you", function(state)
         if state then
-            _G.AT = true;
+            getgenv().AT = true;
 
-    while _G.AT == true do
+    while getgenv().AT == true do
     game:GetService("ReplicatedStorage").Events.Click3:FireServer()
         wait(0.000000000000000000000000000000000005)
     end
         else
-            _G.AT = false;
+            getgenv().AT = false;
         end
     end)
 
     -- Rebirth X
     MainRebirthX:NewToggle("Auto Rebirth", "Rebirths for you", function (state)
         if state then
-            _G.AR = true;
+            getgenv().AR = true;
     
-    while _G.AR == true do
+    while getgenv().AR == true do
     local args = 
-    {[1] = _G.DeezAmount}
+    {[1] = getgenv().DeezAmount}
     
     game:GetService("ReplicatedStorage").Events.Rebirth:FireServer(unpack(args))
         wait(0.000000000000000000000000000000000005)
     end
         else
-            _G.AR = false;
+            getgenv().AR = false;
         end
     end)
 
     -- Rebirth X
-    MainRebirthX:NewDropdown("Rebirth Amount", "Select amount to Rebirth", {"1", "5", "10", "25", "100", "500", "2.5k", "5k", "10k", "50k", "250k", "1M", "25M", "100M", "500M", "1B", "2.5B", "10B", "250B", "1T", "10T", "25T", "100T", "250T", "1Qd", "2.5Qd", "10Qd", "50Qd", "250Qd", "1Qn", "5Qn", "50Qn", "100Qn", "500Qn", "1sx", "10Sx", "25Sx", "100Sx", "500Sx", "1Sp", "2.5Sp", "10Sp", "25Sp", "100Sp", "250Sp", "1o", "2.5o", "10o", "25o", "100o", "250o", "1N", "2.5N", "10N", "25n", "100N", "250N", "1De", "2De", "100De", "250De", "1Ud", "", "", "", "", "", ""}, function(mob)
+    MainRebirthX:NewDropdown("Rebirth Amount", "Select amount to Rebirth", {"1", "5", "10", "25", "100", "500", "2.5k", "5k", "10k", "50k", "250k", "1M", "25M", "100M", "500M", "1B", "2.5B", "10B", "250B", "1T", "10T", "25T", "100T", "250T", "1Qd", "2.5Qd", "10Qd", "50Qd", "250Qd", "1Qn", "5Qn", "50Qn", "100Qn", "500Qn", "1sx", "10Sx", "25Sx", "100Sx", "500Sx", "1Sp", "2.5Sp", "10Sp", "25Sp", "100Sp", "250Sp", "1o", "2.5o", "10o", "25o", "100o", "250o", "1N", "2.5N", "10N", "25n", "100N", "250N", "1De", "2De", "100De", "250De", "1Ud", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""}, function(mob)
         if mob == '1' then
-            _G.DeezAmount = 1 
+            getgenv().DeezAmount = 1 
         elseif mob == '5' then
-            _G.DeezAmount = 2 
+            getgenv().DeezAmount = 2 
         elseif mob == '10' then
-            _G.DeezAmount = 3
+            getgenv().DeezAmount = 3
         elseif mob == '25' then
-            _G.DeezAmount = 4
+            getgenv().DeezAmount = 4
         elseif mob == '100' then
-            _G.DeezAmount = 5
+            getgenv().DeezAmount = 5
         elseif mob == '500' then
-            _G.DeezAmount = 6
+            getgenv().DeezAmount = 6
         elseif mob == '2.5k' then
-            _G.DeezAmount = 7
+            getgenv().DeezAmount = 7
         elseif mob == '5k' then
-            _G.DeezAmount = 8
+            getgenv().DeezAmount = 8
         elseif mob == '10k' then
-            _G.DeezAmount = 9
+            getgenv().DeezAmount = 9
         elseif mob == '50k' then
-            _G.DeezAmount = 10
+            getgenv().DeezAmount = 10
         elseif mob == '250k' then
-            _G.DeezAmount = 11
+            getgenv().DeezAmount = 11
         elseif mob == '1M' then
-            _G.DeezAmount = 12
+            getgenv().DeezAmount = 12
         elseif mob == '25M' then
-            _G.DeezAmount = 13
+            getgenv().DeezAmount = 13
         elseif mob == '100M' then
-            _G.DeezAmount = 14
+            getgenv().DeezAmount = 14
         elseif mob == '500M' then
-            _G.DeezAmount = 15
+            getgenv().DeezAmount = 15
         elseif mob == '1B' then
-            _G.DeezAmount = 16
+            getgenv().DeezAmount = 16
         elseif mob == '2.5B' then
-            _G.DeezAmount = 17
+            getgenv().DeezAmount = 17
         elseif mob == '10B' then
-            _G.DeezAmount = 18
+            getgenv().DeezAmount = 18
         elseif mob == '250B' then
-            _G.DeezAmount = 19
+            getgenv().DeezAmount = 19
         elseif mob == '1T' then
-            _G.DeezAmount = 20
+            getgenv().DeezAmount = 20
         elseif mob == '10T' then
-            _G.DeezAmount = 21
+            getgenv().DeezAmount = 21
         elseif mob == '25T' then
-            _G.DeezAmount = 22
+            getgenv().DeezAmount = 22
         elseif mob == '100T' then
-            _G.DeezAmount = 23
+            getgenv().DeezAmount = 23
         elseif mob == '250T' then
-            _G.DeezAmount = 24
+            getgenv().DeezAmount = 24
         elseif mob == '1Qd' then
-            _G.DeezAmount = 25
+            getgenv().DeezAmount = 25
         elseif mob == '2.5Qd' then
-            _G.DeezAmount = 26
+            getgenv().DeezAmount = 26
         elseif mob == '10Qd' then
-            _G.DeezAmount = 27
+            getgenv().DeezAmount = 27
         elseif mob == '50Qd' then
-            _G. DeezAmount = 28
+            getgenv(). DeezAmount = 28
         elseif mob == '250Qd' then
-            _G. DeezAmount = 29
+            getgenv(). DeezAmount = 29
         elseif mob == '1Qn' then
-            _G. DeezAmount = 30
+            getgenv(). DeezAmount = 30
         elseif mob == '5Qn' then
-            _G. DeezAmount = 31
+            getgenv(). DeezAmount = 31
         elseif mob == '50Qn' then
-            _G. DeezAmount = 32
+            getgenv(). DeezAmount = 32
         elseif mob == '100Qn' then
-            _G. DeezAmount = 33
+            getgenv(). DeezAmount = 33
         elseif mob == '500Qn' then
-            _G. DeezAmount = 34
+            getgenv(). DeezAmount = 34
         elseif mob == '1Sx' then
-            _G. DeezAmount = 35
+            getgenv(). DeezAmount = 35
         elseif mob == '10Sx' then
-            _G. DeezAmount = 36
+            getgenv(). DeezAmount = 36
         elseif mob == '25Sx' then
-            _G. DeezAmount = 37
+            getgenv(). DeezAmount = 37
         elseif mob == '100Sx' then
-            _G. DeezAmount = 38
+            getgenv(). DeezAmount = 38
         elseif mob == '500Sx' then
-            _G. DeezAmount = 39
+            getgenv(). DeezAmount = 39
         elseif mob == '1Sp' then
-            _G. DeezAmount = 40
+            getgenv(). DeezAmount = 40
         elseif mob == '2.5Sp' then
-            _G. DeezAmount = 41
+            getgenv(). DeezAmount = 41
         elseif mob == '10Sp' then
-            _G. DeezAmount = 42
+            getgenv(). DeezAmount = 42
         elseif mob == '25Sp' then
-            _G. DeezAmount = 43
+            getgenv(). DeezAmount = 43
         elseif mob == '100Sp' then
-            _G. DeezAmount = 44
+            getgenv(). DeezAmount = 44
         elseif mob == '250Sp' then
-            _G. DeezAmount = 45
+            getgenv(). DeezAmount = 45
         elseif mob == '1o' then
-            _G. DeezAmount = 46
+            getgenv(). DeezAmount = 46
         elseif mob == '2.5o' then
-            _G. DeezAmount = 47
+            getgenv(). DeezAmount = 47
         elseif mob == '10o' then
-            _G. DeezAmount = 48
+            getgenv(). DeezAmount = 48
         elseif mob == '25o' then
-            _G. DeezAmount = 49
+            getgenv(). DeezAmount = 49
         elseif mob == '100o' then
-            _G. DeezAmount = 50
+            getgenv(). DeezAmount = 50
         elseif mob == '250o' then
-            _G. DeezAmount = 51
+            getgenv(). DeezAmount = 51
         elseif mob == '1N' then
-            _G. DeezAmount = 52
+            getgenv(). DeezAmount = 52
         elseif mob == '2.5N' then
-            _G. DeezAmount = 53
+            getgenv(). DeezAmount = 53
         elseif mob == '10N' then
-            _G. DeezAmount = 54
+            getgenv(). DeezAmount = 54
         elseif mob == '25N' then
-            _G. DeezAmount = 55
+            getgenv(). DeezAmount = 55
         elseif mob == '100N' then
-            _G. DeezAmount = 56
+            getgenv(). DeezAmount = 56
         elseif mob == '2De' then
-            _G. DeezAmount = 57
+            getgenv(). DeezAmount = 57
         elseif mob == '100De' then
-            _G. DeezAmount = 58
+            getgenv(). DeezAmount = 58
         elseif mob == '250De' then
-            _G. DeezAmount = 59
+            getgenv(). DeezAmount = 59
         elseif mob == '1Ud' then
-            _G. DeezAmount = 60
+            getgenv(). DeezAmount = 60
         elseif mob == '' then
-            _G. DeezAmount = 61
+            getgenv(). DeezAmount = 61
         elseif mob == '' then
-            _G. DeezAmount = 62
+            getgenv(). DeezAmount = 62
         elseif mob == '' then
-            _G. DeezAmount = 63
+            getgenv(). DeezAmount = 63
         elseif mob == '' then
-            _G. DeezAmount = 64
+            getgenv(). DeezAmount = 64
+        elseif mob == '' then
+            getgenv(). DeezAmount = 65
+        elseif mob == '' then
+            getgenv(). DeezAmount = 66
+        elseif mob == '' then
+            getgenv(). DeezAmount = 67
+        elseif mob == '' then
+            getgenv(). DeezAmount = 68
+        elseif mob == '' then
+            getgenv(). DeezAmount = 69
+        elseif mob == '' then
+            getgenv(). DeezAmount = 70
+        elseif mob == '' then
+            getgenv(). DeezAmount = 71
         end
     end)
 
     -- Rebirth X
     MainRebirthX:NewToggle("Auto Open Egg", "opens egg", function(state)
         if state then
-            _G.EggOpenEz = true;
+            getgenv().EggOpenEz = true;
 
-    while _G.EggOpenEz == true do
+    while getgenv().EggOpenEz == true do
     local args = 
-    {[1] = _G.EzName,
-    [2] = _G.Single}
+    {[1] = getgenv().EzName,
+    [2] = getgenv().Single}
 
     game:GetService("ReplicatedStorage").Functions.Unbox:InvokeServer(unpack(args))
         wait(0.000000000000000000000000000000000005)
     end
         else
-            _G.EggOpenEz = false;
+            getgenv().EggOpenEz = false;
         end
     end)
 
     -- Rebirth X
-    MainRebirthX:NewDropdown("EggName", "Select Egg Name", {"Basic","Mythic","Forest","Beach","Atlantis", "Desert", "Winter", "Volcano", "Magma", "Moon", "Cyber", "Magic", "Heaven", "Nuclear", "Void", "Spooky", "Cave", "Steampunk", "Hell", "Space", "Mars", "Alien", "Galaxy Forest", "Space Lab", "Fantasy.", "Neon", "Shadow", "Destruction", "Sun", "Saturn"}, function(mob)
+    MainRebirthX:NewDropdown("EggName", "Select Egg Name", {"Basic","Mythic","Forest","Beach","Atlantis", "Desert", "Winter", "Volcano", "Magma", "Moon", "Cyber", "Magic", "Heaven", "Nuclear", "Void", "Spooky", "Cave", "Steampunk", "Hell", "Space", "Mars", "Alien", "Galaxy Forest", "Space Lab", "Fantasy.", "Neon", "Shadow", "Destruction", "Sun", "Saturn", "Hacker", "Black Hole", "Aqua", "Axolotl", "Underwater Lab"}, function(mob)
         if mob == 'Basic' then
-            _G.EzName = "Basic"
+            getgenv().EzName = "Basic"
         elseif mob == 'Mythic' then
-            _G.EzName = "Mythic"
+            getgenv().EzName = "Mythic"
         elseif mob == 'Forest' then
-            _G.EzName = "Forest"
+            getgenv().EzName = "Forest"
         elseif mob == 'Beach' then
-            _G.EzName = "Beach"
+            getgenv().EzName = "Beach"
         elseif mob == 'Atlantis' then
-            _G.EzName = "Atlantis"
+            getgenv().EzName = "Atlantis"
         elseif mob == 'Desert' then
-            _G.EzName = "Desert"
+            getgenv().EzName = "Desert"
         elseif mob == 'Winter' then
-            _G.EzName = "Winter"
+            getgenv().EzName = "Winter"
         elseif mob == 'Volcano' then
-            _G.EzName = "Volcano"
+            getgenv().EzName = "Volcano"
         elseif mob == 'Magma' then
-            _G.EzName = "Magma"
+            getgenv().EzName = "Magma"
         elseif mob == 'Moon' then
-            _G.EzName = "Moon"
+            getgenv().EzName = "Moon"
         elseif mob == 'Cyber' then
-            _G.EzName = "Cyber"
+            getgenv().EzName = "Cyber"
         elseif mob == 'Magic' then
-            _G.EzName = "Magic"
+            getgenv().EzName = "Magic"
         elseif mob == 'Heaven' then
-            _G.EzName = "Heaven"
+            getgenv().EzName = "Heaven"
         elseif mob == 'Nuclear' then
-            _G.EzName = "Nuclear"
+            getgenv().EzName = "Nuclear"
         elseif mob == 'Void' then
-            _G.EzName = "Void"
+            getgenv().EzName = "Void"
         elseif mob == 'Spooky' then
-            _G.EzName = "Spooky"
+            getgenv().EzName = "Spooky"
         elseif mob == 'Cave' then
-            _G.EzName = "Cave"
+            getgenv().EzName = "Cave"
         elseif mob == 'Steampunk' then
-            _G.EzName = "Steampunk"
+            getgenv().EzName = "Steampunk"
         elseif mob == 'Hell' then
-            _G.EzName = "Hell"
+            getgenv().EzName = "Hell"
         elseif mob == 'Space' then
-            _G.EzName = "Space"
+            getgenv().EzName = "Space"
         elseif mob == 'Mars' then
-            _G.EzName = "Mars"
+            getgenv().EzName = "Mars"
         elseif mob == 'Alien' then
-            _G.EzName = "Alien"
+            getgenv().EzName = "Alien"
         elseif mob == 'Galaxy Forest' then
-            _G.EzName = "Galaxy Forest"
+            getgenv().EzName = "Galaxy Forest"
         elseif mob == 'Space Lab' then
-            _G.EzName = "Space Lab."
+            getgenv().EzName = "Space Lab."
         elseif mob == 'Fantasy.' then
-            _G.EzName = "Fantasy"
+            getgenv().EzName = "Fantasy"
         elseif mob == 'Neon' then
-            _G.EzName = "Neon"
+            getgenv().EzName = "Neon"
         elseif mob == 'Shadow' then
-            _G.EzName = "Shadow"
+            getgenv().EzName = "Shadow"
         elseif mob == 'Destruction' then
-            _G.EzName = "Destruction"
+            getgenv().EzName = "Destruction"
         elseif mob == 'Sun' then
-            _G.EzName = "Sun"
+            getgenv().EzName = "Sun"
         elseif mob == 'Saturn' then
-            _G.EzName = 'Saturn'
+            getgenv().EzName = 'Saturn'
+        elseif mob == 'Hacker' then
+            getgenv().EzName = 'Hacker'
+        elseif mob == 'Black Hole' then
+            getgenv().EzName = 'Black Hole'
+        elseif mob == 'Aqua' then
+            getgenv().EzName = 'Aqua'
+        elseif mob == 'Axolotl' then
+            getgenv().EzName = 'Axolotl'
+        elseif mob == 'Underwater Lab' then
+            getgenv().EzName = 'Underwater Lab'
         end
     end)
 
     -- Rebirth X
     MainRebirthX:NewDropdown("Open Amount", "Select amount to open", {"1", "3",}, function(mob)
         if mob == '1' then
-            _G.Single = "Single" 
+            getgenv().Single = "Single" 
         elseif mob == '3' then
-            _G.Single = "Triple"
+            getgenv().Single = "Triple"
         end
     end)
 
     -- Rebirth X
     MainRebirthX:NewToggle("Set best world boost", "makes you have best world boost ", function(state)
         if state then
-    _G.BWBoost = true
+    getgenv().BWBoost = true
 
-    while _G.BWBoost == true do
+    while getgenv().BWBoost == true do
     local args = 
-    {[1] = "Saturn"}
+    {[1] = "Underwater Lab"}
 
     game:GetService("ReplicatedStorage").Events.WorldBoost:FireServer(unpack(args))
-        wait(0.000000000000000000000000000000000005)   
+        wait(0.0005)   
     end
         else
-            _G.BWBoost = false;
+            getgenv().BWBoost = false;
         end    
-    end)
-
-    -- Rebirth X
-    MainRebirthX:NewToggle("Buy Click Multi", "auto buys click multi", function(state)
-        if state then
-            _G.AutoBuyCM = true;
-
-    while _G.AutoBuyCM == true do
-    local args = {
-        [1] = "ClickMultiplier"
-    }
-
-    game:GetService("ReplicatedStorage").Functions.Upgrade:InvokeServer(unpack(args))
-        wait(0.000000000000000000000000000000000005)
-    end
-        else
-            _G.AutoBuyCM = false;
-        end
     end)
 
     -- Rebirth X
     MainRebirthX:NewToggle("CraftAll", "auto crafts all Pets", function(state)
         if state then
-            _G.AutoCraftAll = true;
+            getgenv().AutoCraftAll = true;
 
-    while _G.AutoCraftAll == true do
+    while getgenv().AutoCraftAll == true do
 
     local args = {
         [1] = "CraftAll",
@@ -742,419 +795,11 @@ if game.PlaceId == 8540346411 then
         wait(0.000000000000000000000000000000000005)
     end
         else
-            _G.AutoCraftAll = false;
+            getgenv().AutoCraftAll = false;
         end
     end)
 
-    -- Rebirth X
-    MainRebirthX:NewToggle("x2Clicks Potion", "auto buys click potion", function(state)
-        if state then
-            _G.ClickPotion = true;
-
-    while _G.ClickPotion == true do
-    local args = {
-        [1] = "x2Clicks",
-        [2] = 1
-    }
-
-    game:GetService("ReplicatedStorage").Events.Potion:FireServer(unpack(args))
-        wait(0.000000000000000000000000000000000005)
-    end
-        else
-            _G.ClickPotion = false;
-        end
-    end)
-
-    -- Rebirth X
-    MainRebirthX:NewToggle("x2Gems Potion", "auto buys gem potion", function(state)
-        if state then
-            _G.GemPo = true;
-
-    while _G.GemPo == true do
-    local args = {
-        [1] = "x2Gems",
-        [2] = 1
-    }
-
-    game:GetService("ReplicatedStorage").Events.Potion:FireServer(unpack(args))
-        wait(0.000000000000000000000000000000000005)
-    end
-        else
-            _G.GemPo = false;
-        end
-    end)
-
-    -- Rebirth X
-    MainRebirthX:NewToggle("x2Luck Potion", "auto buys luck potion", function(state)
-        if state then
-            _G.LuckPo = true;
-
-    while _G.LuckPo == true do
-    local args = {
-        [1] = "x2Luck",
-        [2] = 1
-    }
-
-    game:GetService("ReplicatedStorage").Events.Potion:FireServer(unpack(args))
-        wait(0.000000000000000000000000000000000005)
-    end
-        else
-            _G.LuckPo= false;
-        end
-    end)
-
-    -- Rebirth X
-    MainRebirthX:NewToggle("x2Rebirths Potion", "auto buys rebirth potion", function(state)
-        if state then
-            _G.RPO = true;
-
-    while _G.RPO == true do
-    local args = {
-        [1] = "x2Rebirths",
-        [2] = 1
-    }
-
-    game:GetService("ReplicatedStorage").Events.Potion:FireServer(unpack(args))
-        wait(0.000000000000000000000000000000000005)
-    end
-        else
-            _G.RPO = false;
-        end
-    end)
-
-    -- Rebirth X
-    MainRebirthX:NewToggle("x2PetXP Potion", "auto buys pet xp potion", function(state)
-        if state then
-            _G.PetXPo = true;
-
-    while _G.PetXPo == true do
-    local args = {
-        [1] = "x2PetXP",
-        [2] = 1
-    }
-
-    game:GetService("ReplicatedStorage").Events.Potion:FireServer(unpack(args))
-        wait(0.000000000000000000000000000000000005)
-    end
-        else
-            _G.PetXPo = false;
-        end
-    end)
-
-    -- Rebirth X
-    MainRebirthX:NewToggle("x2HatchSpeed Potion", "auto buys hatch speed potion", function(state)
-        if state then
-            _G.HatchPo = true;
-
-    while _G.HatchPo == true do
-    local args = {
-        [1] = "x2HatchSpeed",
-        [2] = 1
-    }
-
-    game:GetService("ReplicatedStorage").Events.Potion:FireServer(unpack(args))
-        wait(0.000000000000000000000000000000000005)
-    end
-        else
-            _G.HatchPo = false;
-        end
-    end)
-
-    -- Rebirth X
-    MainRebirthX:NewToggle("Buy WalkSpeed", "auto buys WalkSpeed", function(state)
-        if state then
-            _G.WSAB = true;
-
-    while _G.WSAB == true do
-    local args = {
-        [1] = "WalkSpeed"
-    }
-
-    game:GetService("ReplicatedStorage").Functions.Upgrade:InvokeServer(unpack(args))
-        wait(0.000000000000000000000000000000000005)
-    end
-        else
-            _G.WSAB = false;
-        end
-    end)
-
-    -- Rebirth X
-    MainRebirthX:NewToggle("Buy Gem Multi", "auto buys gem multi", function(state)
-        if state then
-            _G.GMAB = true;
-
-    while _G.GMAB == true do
-    local args = {
-        [1] = "GemsMultiplier"
-    }
-
-    game:GetService("ReplicatedStorage").Functions.Upgrade:InvokeServer(unpack(args))
-        wait(0.000000000000000000000000000000000005)
-    end
-        else
-            _G.GMAB = false;
-        end
-    end)
-
-    -- Rebirth X
-    MainRebirthX:NewToggle("Buy PetEquip", "auto buys more pet equip", function(state)
-        if state then
-            _G.PetEAB = true;
-
-    while _G.PetEAB == true do
-    local args = {
-        [1] = "PetEquip"
-    }
-
-    game:GetService("ReplicatedStorage").Functions.Upgrade:InvokeServer(unpack(args))
-        wait(0.000000000000000000000000000000000005)
-    end
-        else
-            _G.PetEAB = false;
-        end
-    end)
-
-    -- Rebirth X
-    MainRebirthX:NewToggle("Buy PetStorage", "auto buys pet Storage", function(state)
-        if state then
-            _G.PetStoreAB = true;
-
-    while _G.PetStoreAB == true do
-    local args = {
-        [1] = "PetStorage"
-    }
-
-    game:GetService("ReplicatedStorage").Functions.Upgrade:InvokeServer(unpack(args))
-        wait(0.000000000000000000000000000000000005)
-    end
-        else
-            _G.PetStoreAB = false;
-        end
-    end)
-
-    -- Rebirth X
-    MainRebirthX:NewToggle("Buy Luck Multi", "auto buys luck multi", function(state)
-        if state then
-            _G.LMAB = true;
-
-    while _G.LMAB == true do
-    local args = {
-        [1] = "LuckMultiplier"
-    }
-
-    game:GetService("ReplicatedStorage").Functions.Upgrade:InvokeServer(unpack(args))
-        wait(0.000000000000000000000000000000000005)
-    end
-        else
-            _G.LMAB = false;
-        end
-    end)
-
-    -- Rebirth X
-    MainRebirthX:NewToggle("Buy FreeAutoClickUpgrade", "auto buys faster auto click", function(state)
-        if state then
-            _G.FFAC = true;
-
-    while _G.FFAC == true do
-    local args = {
-        [1] = "FasterFreeAutoClicker"
-    }
-
-    game:GetService("ReplicatedStorage").Functions.Upgrade:InvokeServer(unpack(args))
-        wait(0.000000000000000000000000000000000005)
-    end
-        else
-            _G.FFAC = false;
-        end
-    end)
-
-    -- Rebirth X
-    MainRebirthX:NewLabel("buttons")
-
-    -- Rebirth X
-    MainRebirthX:NewButton("Buy Aura", "Select Aura to buy first", function()
-        local args = 
-    {[1] = _G.AuraName}
-
-    game:GetService("ReplicatedStorage").Functions.Aura:InvokeServer(unpack(args))
-    end)
-
-    -- Rebirth X
-    MainRebirthX:NewDropdown("Aura Select", "Select Aura to buy", {"Water Aura", "Forest Aura", "Ice Aura", "Party Aura", "Light Aura", "Sun Aura", "Galaxy Aura", "Nuclear Aura", "Void Aura", "Plasma Aura", "Crystal Aura", "Soul Aura", "Hell Aura", "Electro Aura", "Alien Aura", "Prismatic Aura", "Atom Aura", "Fantasy Aura", "Yin Yang Aura", "Hypno Aura", "Shadow Aura", "Black Lightning Aura", "Destruction Aura", "Earth Aura", "Saturn Aura"}, function(mob)
-        if mob == 'Water Aura' then
-            _G.AuraName = 1 
-        elseif mob == 'Forest Aura' then
-            _G.AuraName = 2
-        elseif mob == 'Ice Aura' then
-            _G.AuraName = 3
-        elseif mob == 'Party Aura' then
-            _G.AuraName = 4
-        elseif mob == 'Light Aura' then
-            _G.AuraName = 5
-        elseif mob == 'Sun Aura' then
-            _G.AuraName = 6
-        elseif mob == 'Galaxy Aura' then
-            _G.AuraName = 7
-        elseif mob == 'Nuclear Aura' then
-            _G.AuraName = 8
-        elseif mob == 'Void Aura' then
-            _G.AuraName = 9
-        elseif mob == 'Plasma Aura' then
-            _G.AuraName = 10
-        elseif mob == 'Crystal Aura' then
-            _G.AuraName = 11
-        elseif mob == 'Soul Aura' then
-            _G.AuraName = 12
-        elseif mob == 'Hell Aura' then
-            _G.AuraName = 13
-        elseif mob == 'Electro Aura' then
-            _G.AuraName = 14
-        elseif mob == 'Alien Aura' then
-            _G.AuraName = 15
-        elseif mob == 'Prismatic Aura' then
-            _G.AuraName = 16
-        elseif mob == 'Atom Aura' then
-            _G.AuraName = 17
-        elseif mob == 'Fantasy Aura' then
-            _G.AuraName = 18
-        elseif mob == 'Yin Yang Aura' then
-            _G.AuraName = 19
-        elseif mob == 'Hypno Aura' then
-            _G.AuraName = 20
-        elseif mob == 'Shadow Aura' then
-            _G.AuraName = 21
-        elseif mob == 'Black Lightning Aura' then
-            _G.AuraName = 22
-        elseif mob == 'Destruction Aura' then
-            _G.AuraName = 23
-        elseif mob == 'Earth Aura' then
-            _G.AuraName = 24
-        elseif mob == 'Saturn Aura' then
-            _G.AuraName = 25
-        end
-    end)
-
-    -- Rebirth X
-    MainRebirthX:NewButton("Buy TapSkin", "select tapskin to buy", function()
-        _G.TAPPYSKIN = true;
-
-    while _G.TAPPYSKIN == true do
-    local args = 
-    {[1] = _G.TapNumber}
-
-    game:GetService("ReplicatedStorage").Functions.TapSkin:InvokeServer(unpack(args))
-        wait(0.000000000000000000000000000000000005)
-    end
-    end)
-
-    -- Rebirth X
-    MainRebirthX:NewDropdown("TapSkin Select", "select tapskin", {"Grass Skin", "Water Skin", "Light Skin", "Dark Skin", "Sun Skin", "Fire Skin", "Toxic Skin", "Cyber Skin", "Galaxy Skin", "Candy Skin", "Void Skin", "Powerful Skin", "Electro Skin", "Devil Skin", "Earth Skin", "Galactic Skin", "Saturn Skin"}, function(mob)
-        if mob == 'Grass Skin' then
-            _G.TapNumber = 1 
-        elseif mob == 'Water Skin' then
-            _G.TapNumber = 2
-        elseif mob == 'Light Skin' then
-            _G.TapNumber = 3
-        elseif mob == 'Dark Skin' then
-            _G.TapNumber = 4
-        elseif mob == 'Sun Skin' then
-            _G.TapNumber = 5
-        elseif mob == 'Fire Skin' then
-            _G.TapNumber = 6
-        elseif mob == 'Toxic Skin' then
-            _G.TapNumber = 7
-        elseif mob == 'Cyber Skin' then
-            _G.TapNumber = 8
-        elseif mob == 'Galaxy Skin' then
-            _G.TapNumber = 9
-        elseif mob == 'Candy Skin' then
-            _G.TapNumber = 10
-        elseif mob == 'Void Skin' then
-            _G.TapNumber = 11
-        elseif mob == 'Powerful Skin' then
-            _G.TapNumber = 12
-        elseif mob == 'Electro Skin' then
-            _G.TapNumber = 13
-        elseif mob == 'Devil Skin' then
-            _G.TapNumber = 14
-        elseif mob == 'Earth Skin' then
-            _G.TapNumber = 15
-        elseif mob == 'Galactic Skin' then
-            _G.TapNumber = 16
-        elseif mob == 'Saturn Skin' then
-            _G.TapNumber = 17
-        end
-    end)
-
-    -- Rebirth X
-    MainRebirthX:NewButton("MuteMusic", "Mutes the music", function()
-        local args = 
-        {[1] = "MuteMusic",
-        [2] = true}
-        game:GetService("ReplicatedStorage").Events.Setting:FireServer(unpack(args))
-    end)
-
-    -- Rebirth X
-    MainRebirthX:NewButton("MuteSounds", "Mutes the SOUNDS", function()
-        local args = {
-            [1] = "MuteSounds",
-            [2] = true
-        }
-        
-        game:GetService("ReplicatedStorage").Events.Setting:FireServer(unpack(args))
-    end)
-
-    -- Rebirth X
-    MainRebirthX:NewButton("HidePopUps", "hides the PopUps", function()
-        local args = {
-            [1] = "PopUp",
-            [2] = true
-        }
-        
-        game:GetService("ReplicatedStorage").Events.Setting:FireServer(unpack(args))
-    end)
-
-    -- Rebirth X
-    MainRebirthX:NewButton("HideOtherPets", "Hides other people's Pets", function()
-        local args = {
-            [1] = "HideOtherPets",
-            [2] = true
-        }
-        
-        game:GetService("ReplicatedStorage").Events.Setting:FireServer(unpack(args))
-    end)
-
-    -- Rebirth X
-    MainRebirthX:NewButton("HideYourPets", "Hides your Pets", function()
-        local args = {
-            [1] = "HideYourPets",
-            [2] = true
-        }
-        
-        game:GetService("ReplicatedStorage").Events.Setting:FireServer(unpack(args))
-    end)
-
-    -- Rebirth X
-    MainRebirthX:NewButton("HideBoosts", "Hides the Boosts on your screen", function()
-        local args = {
-            [1] = "HideBoosts",
-            [2] = true
-        }
-        
-        game:GetService("ReplicatedStorage").Events.Setting:FireServer(unpack(args))
-    end)
-
-    -- Rebirth X
-    MainRebirthX:NewButton("HidesAuras", "Hides auras", function()
-        local args = {
-            [1] = "HideAuras",
-            [2] = true
-        }
-        
-        game:GetService("ReplicatedStorage").Events.Setting:FireServer(unpack(args))
-    end)
-
-    -- Rebirth X
+        -- Rebirth X
     MainRebirthX:NewButton("claim all chest", "collects all chest", function()
         local args = {
             [1] = "Spawn"
@@ -1203,10 +848,809 @@ if game.PlaceId == 8540346411 then
         }
         
         game:GetService("ReplicatedStorage").Events.Chest:FireServer(unpack(args))
+
+        local args = {
+            [1] = "Aqua"
+        }
+        
+        game:GetService("ReplicatedStorage").Events.Chest:FireServer(unpack(args))
+
+        local args = {
+            [1] = "Hacker"
+        }
+
+        game:GetService("ReplicatedStorage").Events.Chest:FireServer(unpack(args))
+  
+        local args = {
+            [1] = "Shadow"
+        }
+
+        game:GetService("ReplicatedStorage").Events.Chest:FireServer(unpack(args))
     end)
 
     -- Rebirth X
-    MainRebirthX:NewButton("Set Delete Common", "sets autodelete to Common", function()
+    MainRebirthX:NewButton("Destruction Machine", "Draw boost from Destructio nMachine", function()
+        game:GetService("ReplicatedStorage").Events.DestructionMachine:FireServer()
+    end)
+---------------------------------------------------------------------------------------------------------------------------------------
+    local Potions = Window:NewTab("Potions")
+    local MainPotions = Potions:NewSection("Auto buy potions")
+    -- Rebirth X
+    MainPotions:NewToggle("x2Clicks Potion", "auto buys click potion", function(state)
+        if state then
+            getgenv().ClickPotion = true;
+
+    while getgenv().ClickPotion == true do
+    local args = {
+        [1] = "x2Clicks",
+        [2] = 1
+    }
+    game:GetService("ReplicatedStorage").Events.Potion:FireServer(unpack(args))
+        wait(0.000000000000000000000000000000000005)
+    end
+        else
+            getgenv().ClickPotion = false;
+        end
+    end)
+
+    -- Rebirth X
+    MainPotions:NewToggle("x2Gems Potion", "auto buys gem potion", function(state)
+        if state then
+            getgenv().GemPo = true;
+
+    while getgenv().GemPo == true do
+    local args = {
+        [1] = "x2Gems",
+        [2] = 1
+    }
+    game:GetService("ReplicatedStorage").Events.Potion:FireServer(unpack(args))
+        wait(0.000000000000000000000000000000000005)
+    end
+        else
+            getgenv().GemPo = false;
+        end
+    end)
+
+    -- Rebirth X
+    MainPotions:NewToggle("x2Luck Potion", "auto buys luck potion", function(state)
+        if state then
+            getgenv().LuckPo = true;
+
+    while getgenv().LuckPo == true do
+    local args = {
+        [1] = "x2Luck",
+        [2] = 1
+    }
+    game:GetService("ReplicatedStorage").Events.Potion:FireServer(unpack(args))
+        wait(0.000000000000000000000000000000000005)
+    end
+        else
+            getgenv().LuckPo= false;
+        end
+    end)
+
+    -- Rebirth X
+    MainPotions:NewToggle("x2Rebirths Potion", "auto buys rebirth potion", function(state)
+        if state then
+            getgenv().RPO = true;
+
+    while getgenv().RPO == true do
+    local args = {
+        [1] = "x2Rebirths",
+        [2] = 1
+    }
+    game:GetService("ReplicatedStorage").Events.Potion:FireServer(unpack(args))
+        wait(0.000000000000000000000000000000000005)
+    end
+        else
+            getgenv().RPO = false;
+        end
+    end)
+
+    -- Rebirth X
+    MainPotions:NewToggle("x2PetXP Potion", "auto buys pet xp potion", function(state)
+        if state then
+            getgenv().PetXPo = true;
+
+    while getgenv().PetXPo == true do
+    local args = {
+        [1] = "x2PetXP",
+        [2] = 1
+    }
+    game:GetService("ReplicatedStorage").Events.Potion:FireServer(unpack(args))
+        wait(0.000000000000000000000000000000000005)
+    end
+        else
+            getgenv().PetXPo = false;
+        end
+    end)
+
+    -- Rebirth X
+    MainPotions:NewToggle("x2HatchSpeed Potion", "auto buys hatch speed potion", function(state)
+        if state then
+            getgenv().HatchPo = true;
+
+    while getgenv().HatchPo == true do
+    local args = {
+        [1] = "x2HatchSpeed",
+        [2] = 1
+    }
+    game:GetService("ReplicatedStorage").Events.Potion:FireServer(unpack(args))
+        wait(0.000000000000000000000000000000000005)
+    end
+        else
+            getgenv().HatchPo = false;
+        end
+    end)
+
+    -- Rebirth X
+    MainPotions:NewToggle("x3Clicks Potion", "auto buys click potion", function(state)
+        if state then
+            getgenv().AqCPO = true;
+    while getgenv().AqCPO == true do
+        local args = {
+            [1] = "x3Clicks",
+            [2] = 1,
+            [3] = "aqua"
+        }
+        game:GetService("ReplicatedStorage").Events.Potion:FireServer(unpack(args))
+        wait(0.000000000000000000000000000000000005)
+    end
+        else
+            getgenv().AqCPO = false;
+        end
+    end)
+
+    -- Rebirth X
+    MainPotions:NewToggle("x3Gems Potion", "auto buys gem potion", function(state)
+        if state then
+        getgenv().AqGPO = true;
+    while getgenv().AqGPO == true do
+        local args = {
+        [1] = "x3Gems",
+        [2] = 1,
+        [3] = "aqua"}
+        game:GetService("ReplicatedStorage").Events.Potion:FireServer(unpack(args))
+        wait(0.000000000000000000000000000000000005)
+    end
+        else
+            getgenv().AqGPO = false;
+        end
+    end)
+
+    -- Rebirth X
+    MainPotions:NewToggle("x2Luck Potion", "auto buys luck potion", function(state)
+        if state then
+            getgenv().AqLPO = true;
+    while getgenv().AqLPO == true do
+        local args = {
+            [1] = "x2Luck",
+            [2] = 1,
+            [3] = "aqua"}
+        game:GetService("ReplicatedStorage").Events.Potion:FireServer(unpack(args))
+        wait(0.000000000000000000000000000000000005)
+    end
+        else
+            getgenv().AqLPO = false;
+        end
+    end)
+
+    -- Rebirth X
+    MainPotions:NewToggle("x3Rebirth Potion", "auto buys rebirth potion", function(state)
+        if state then
+            getgenv().AqRPO = true;
+    while getgenv().AqRPO == true do
+        local args = {
+            [1] = "x3Rebirths",
+            [2] = 1,
+            [3] = "aqua"}
+        game:GetService("ReplicatedStorage").Events.Potion:FireServer(unpack(args))
+        wait(0.000000000000000000000000000000000005)
+    end
+        else
+            getgenv().AqRPO = false;
+        end
+    end)
+---------------------------------------------------------------------------------------------------------------------------------------
+    local Upgrade = Window:NewTab("Upgrades")
+    local MainUpgrade = Upgrade:NewSection("Auto buy upgrades")
+
+    -- Rebirth X
+    MainUpgrade:NewButton("Buy FreeAutoClicker", "free autoclick = slow, no upgrades", function()
+        local args = {[1] = "FreeAutoClicker"}
+        game:GetService("ReplicatedStorage").Functions.Upgrade:InvokeServer(unpack(args))
+    end)
+
+    -- Rebirth X
+    MainUpgrade:NewToggle("Buy FasterAutoClickUpgrade", "auto buys faster auto click", function(state)
+        if state then
+    getgenv().FFAC = true;
+
+    while getgenv().FFAC == true do
+        local args = {[1] = "FasterFreeAutoClicker"}
+        game:GetService("ReplicatedStorage").Functions.Upgrade:InvokeServer(unpack(args))
+        wait(0.000000000000000000000000000000000005)
+    end
+        else
+            getgenv().FFAC = false; 
+        end
+    end)
+
+    -- Rebirth X
+    MainUpgrade:NewToggle("Buy Click Multi", "auto buys click multi", function(state)
+        if state then
+            getgenv().AutoBuyCM = true;
+
+    while getgenv().AutoBuyCM == true do
+    local args = {[1] = "ClickMultiplier"}
+    game:GetService("ReplicatedStorage").Functions.Upgrade:InvokeServer(unpack(args))
+        wait(0.000000000000000000000000000000000005)
+    end
+        else
+            getgenv().AutoBuyCM = false;
+        end
+    end)
+
+    -- Rebirth X
+    MainUpgrade:NewToggle("Buy WalkSpeed", "auto buys WalkSpeed", function(state)
+        if state then
+    getgenv().WSAB = true;
+
+    while getgenv().WSAB == true do
+    local args = {[1] = "WalkSpeed"}
+    game:GetService("ReplicatedStorage").Functions.Upgrade:InvokeServer(unpack(args))
+        wait(0.000000000000000000000000000000000005)
+    end
+        else
+            getgenv().WSAB = false;
+        end
+    end)
+
+    -- Rebirth X
+    MainUpgrade:NewToggle("Buy Gem Multi", "auto buys gem multi", function(state)
+        if state then
+            getgenv().GMAB = true;
+
+    while getgenv().GMAB == true do
+    local args = {[1] = "GemsMultiplier"}
+    game:GetService("ReplicatedStorage").Functions.Upgrade:InvokeServer(unpack(args))
+        wait(0.000000000000000000000000000000000005)
+    end
+        else
+            getgenv().GMAB = false;
+        end
+    end)
+
+    -- Rebirth X
+    MainUpgrade:NewToggle("Buy PetEquip", "auto buys more pet equip", function(state)
+        if state then
+            getgenv().PetEAB = true;
+
+    while getgenv().PetEAB == true do
+    local args = {
+        [1] = "PetEquip"
+    }
+    game:GetService("ReplicatedStorage").Functions.Upgrade:InvokeServer(unpack(args))
+        wait(0.000000000000000000000000000000000005)
+    end
+        else
+            getgenv().PetEAB = false;
+        end
+    end)
+
+    -- Rebirth X
+    MainUpgrade:NewToggle("Buy PetStorage", "auto buys pet Storage", function(state)
+        if state then
+            getgenv().PetStoreAB = true;
+
+    while getgenv().PetStoreAB == true do
+    local args = {
+        [1] = "PetStorage"
+    }
+    game:GetService("ReplicatedStorage").Functions.Upgrade:InvokeServer(unpack(args))
+        wait(0.000000000000000000000000000000000005)
+    end
+        else
+            getgenv().PetStoreAB = false;
+        end
+    end)
+
+    -- Rebirth X
+    MainUpgrade:NewToggle("Buy Luck Multi", "auto buys luck multi", function(state)
+        if state then
+            getgenv().LMAB = true;
+
+    while getgenv().LMAB == true do
+    local args = {[1] = "LuckMultiplier"}
+    game:GetService("ReplicatedStorage").Functions.Upgrade:InvokeServer(unpack(args))
+        wait(0.000000000000000000000000000000000005)
+    end
+        else
+            getgenv().LMAB = false;
+        end
+    end)
+
+    -- Rebirth X
+    MainUpgrade:NewToggle("Buy Gem Multi Aqua", "auto buys gem multi", function (state)
+        if state then
+            getgenv().AGMB = true;
+
+        while getgenv().AGMB == true do
+            local args = 
+            {[1] = "GemsMultiplier",
+             [2] = "aqua"}
+            game:GetService("ReplicatedStorage").Functions.Upgrade:InvokeServer(unpack(args))
+            wait(0.000000000000000000000000000000000005)
+        end           
+    else
+        getgenv().AGMB = false;
+        end
+    end)
+
+    -- Rebirth X
+    MainUpgrade:NewToggle("Buy Click Multi Aqua", "auto buys click multi", function (state)
+        if state then
+            getgenv().ACMB = true;
+
+        while getgenv().ACMB == true do
+            local args = 
+            {[1] = "ClickMultiplier",
+             [2] = "aqua"}
+            game:GetService("ReplicatedStorage").Functions.Upgrade:InvokeServer(unpack(args))
+            wait(0.000000000000000000000000000000000005)
+        end           
+    else
+        getgenv().ACMB = false;
+        end
+    end)
+
+    -- Rebirth X
+    MainUpgrade:NewToggle("Buy Pet Equip Aqua", "auto buys pet equip", function (state)
+        if state then
+            getgenv().APEMB = true;
+
+        while getgenv().APEMB == true do
+            local args = 
+            {[1] = "PetEquip",
+             [2] = "aqua"}
+            game:GetService("ReplicatedStorage").Functions.Upgrade:InvokeServer(unpack(args))
+            wait(0.000000000000000000000000000000000005)
+        end           
+    else
+        getgenv().APEMB = false;
+        end
+    end)
+
+    -- Rebirth X
+    MainUpgrade:NewToggle("Buy Hatch Speed Aqua", "auto buys Hatch Speed", function (state)
+        if state then
+            getgenv().AHSMB = true;
+
+        while getgenv().AHSMB == true do
+            local args = 
+            {[1] = "HatchSpeed",
+             [2] = "aqua"}
+            game:GetService("ReplicatedStorage").Functions.Upgrade:InvokeServer(unpack(args))
+            wait(0.000000000000000000000000000000000005)
+        end           
+    else
+        getgenv().AHSMB = false;
+        end
+    end)
+
+    -- Rebirth X
+    MainUpgrade:NewToggle("Buy Luck Multi Aqua", "auto buys luck multi", function (state)
+        if state then
+            getgenv().ALMB = true;
+
+        while getgenv().ALMB == true do
+            local args = 
+            {[1] = "LuckMultiplier",
+             [2] = "aqua"}
+            game:GetService("ReplicatedStorage").Functions.Upgrade:InvokeServer(unpack(args))
+            wait(0.000000000000000000000000000000000005)
+        end           
+    else
+        getgenv().ALMB = false;
+        end
+    end)
+
+    -- Rebirth X
+    MainUpgrade:NewToggle("Buy Pet Storage Aqua", "auto buys Pet Storage", function (state)
+        if state then
+            getgenv().APSMB = true;
+
+        while getgenv().APSMB == true do
+            local args = 
+            {[1] = "PetStorage",
+             [2] = "aqua"}
+            game:GetService("ReplicatedStorage").Functions.Upgrade:InvokeServer(unpack(args))
+            wait(0.000000000000000000000000000000000005)
+        end           
+    else
+        getgenv().APSMB = false;
+        end
+    end)
+
+    -- Rebirth X
+    MainUpgrade:NewToggle("Buy Evolution Slot Aqua", "auto buys Evolution Slot", function (state)
+        if state then
+            getgenv().AESMB = true;
+
+        while getgenv().AESMB == true do
+            local args = 
+            {[1] = "EvolutionSlot",
+             [2] = "aqua"}
+            game:GetService("ReplicatedStorage").Functions.Upgrade:InvokeServer(unpack(args))
+            wait(0.000000000000000000000000000000000005)
+        end           
+    else
+        getgenv().AESMB = false;
+        end
+    end)
+
+    -- Rebirth X
+    MainUpgrade:NewToggle("Buy Evolution Time Aqua", "auto buys Evolution Time", function (state)
+        if state then
+            getgenv().AETMB = true;
+
+        while getgenv().AETMB == true do
+            local args = 
+            {[1] = "EvolutionTime",
+             [2] = "aqua"}
+            game:GetService("ReplicatedStorage").Functions.Upgrade:InvokeServer(unpack(args))
+            wait(0.000000000000000000000000000000000005)
+        end           
+    else
+        getgenv().AETMB = false;
+        end
+    end)
+
+    -- Rebirth X
+    MainUpgrade:NewButton("Buy teleport", "allows you to teleport to unlocked areas", function()
+        local args = {
+            [1] = "Teleport",
+            [2] = "space"}
+        game:GetService("ReplicatedStorage").Functions.Upgrade:InvokeServer(unpack(args))
+    end)
+
+    -- Rebirth X
+    MainUpgrade:NewToggle("Buy ClickMultiSpace", "auto buys click multi space", function(state)
+        if state then
+            getgenv().CMSAB = true;
+
+    while getgenv().CMSAB == true do
+    local args = {[1] = "ClickMultiplier",
+                  [2] = "space"}
+    game:GetService("ReplicatedStorage").Functions.Upgrade:InvokeServer(unpack(args))
+        wait(0.000000000000000000000000000000000005)
+    end
+        else
+            getgenv().CMSAB = false;
+        end
+    end)
+
+    -- Rebirth X
+    MainUpgrade:NewToggle("Buy ChestCoolDown", "auto buys ChestCoolDown", function(state)
+        if state then
+            getgenv().ChestCoolDown = true;
+
+    while getgenv().ChestCoolDown == true do
+    local args = {
+        [1] = "ChestCountdown",
+        [2] = "space"}
+    game:GetService("ReplicatedStorage").Functions.Upgrade:InvokeServer(unpack(args))
+        wait(0.000000000000000000000000000000000005)
+    end
+        else
+            getgenv().ChestCoolDown = false;
+        end
+    end)
+
+    -- Rebirth X
+    MainUpgrade:NewToggle("Buy BankSpace", "auto buys bank space", function(state)
+        if state then
+            getgenv().Bspace = true;
+
+    while getgenv().Bspace == true do
+    local args = {
+        [1] = "BankSpace",
+        [2] = "space"}
+    game:GetService("ReplicatedStorage").Functions.Upgrade:InvokeServer(unpack(args))
+        wait(0.000000000000000000000000000000000005)
+    end
+        else
+            getgenv().Bspace = false;
+        end
+    end)
+
+    -- Rebirth X
+    MainUpgrade:NewToggle("Buy MaxCombo", "auto buys max Combo", function(state)
+        if state then
+            getgenv().MaxCSAB = true;
+
+    while getgenv().MaxCSAB == true do
+    local args = {
+        [1] = "MaxCombo",
+        [2] = "space"}
+    game:GetService("ReplicatedStorage").Functions.Upgrade:InvokeServer(unpack(args))
+        wait(0.000000000000000000000000000000000005)
+    end
+        else
+            getgenv().MaxCSAB = false;
+        end
+    end)
+
+    -- Rebirth X
+    MainUpgrade:NewToggle("Buy PetEquipSpace", "auto buys pet equip", function(state)
+        if state then
+            getgenv().PetEquipSAB = true;
+
+    while getgenv().PetEquipSAB == true do
+    local args = {
+        [1] = "PetEquip",
+        [2] = "space"}
+    game:GetService("ReplicatedStorage").Functions.Upgrade:InvokeServer(unpack(args))
+        wait(0.000000000000000000000000000000000005)
+    end
+        else
+            getgenv().PetEquipSAB = false;
+        end
+    end)
+
+    -- Rebirth X
+    MainUpgrade:NewToggle("Buy LuckMultiSpace", "auto buys luck multi", function(state)
+        if state then
+            getgenv().LuckMSAB = true;
+
+    while getgenv().LuckMSAB == true do
+    local args = {
+        [1] = "LuckMultiplier",
+        [2] = "space"}
+    game:GetService("ReplicatedStorage").Functions.Upgrade:InvokeServer(unpack(args))
+        wait(0.000000000000000000000000000000000005)
+    end
+        else
+            getgenv().LuckMSAB = false;
+        end
+    end)
+
+    -- Rebirth X
+    MainUpgrade:NewToggle("Buy GoldenChance", "auto buys goldenchance", function(state)
+        if state then
+            getgenv().GoldCSAB = true;
+
+    while getgenv().GoldCSAB == true do
+    local args = {
+        [1] = "GoldenChance",
+        [2] = "space"}
+    game:GetService("ReplicatedStorage").Functions.Upgrade:InvokeServer(unpack(args))
+        wait(0.000000000000000000000000000000000005)
+    end
+        else
+            getgenv().GoldCSAB = false;
+        end
+    end)
+
+    -- Rebirth X
+    MainUpgrade:NewToggle("AutoToxicChance", "auto buys toxic chance", function(state)
+        if state then
+            getgenv().ToxicCSAB = true;
+
+    while getgenv().ToxicCSAB == true do
+    local args = {
+        [1] = "ToxicChance",
+        [2] = "space"}
+    game:GetService("ReplicatedStorage").Functions.Upgrade:InvokeServer(unpack(args))
+        wait(0.000000000000000000000000000000000005)
+    end
+        else
+            getgenv().ToxicCSAB = false;
+        end
+    end)
+---------------------------------------------------------------------------------------------------------------------------------------
+    local ArSk = Window:NewTab("Auras and Skins")
+    local MainArSk = ArSk:NewSection("Auras and Tapskins")
+    -- Rebirth X
+    MainArSk:NewButton("Buy Aura", "Select Aura to buy first", function()
+        local args = 
+    {[1] = getgenv().AuraName}
+
+    game:GetService("ReplicatedStorage").Functions.Aura:InvokeServer(unpack(args))
+    end)
+
+    -- Rebirth X
+    MainArSk:NewDropdown("Aura Select", "Select Aura to buy", {"Water Aura", "Forest Aura", "Ice Aura", "Party Aura", "Light Aura", "Sun Aura", "Galaxy Aura", "Nuclear Aura", "Void Aura", "Plasma Aura", "Crystal Aura", "Soul Aura", "Hell Aura", "Electro Aura", "Alien Aura", "Prismatic Aura", "Atom Aura", "Fantasy Aura", "Yin Yang Aura", "Hypno Aura", "Shadow Aura", "Black Lightning Aura", "Destruction Aura", "Earth Aura", "Saturn Aura", "Godly Aura", "Universe Aura", "Aqua Aura", "Emoji Aura", "Enchanted Aura"}, function(mob)
+        if mob == 'Water Aura' then
+            getgenv().AuraName = 1 
+        elseif mob == 'Forest Aura' then
+            getgenv().AuraName = 2
+        elseif mob == 'Ice Aura' then
+            getgenv().AuraName = 3
+        elseif mob == 'Party Aura' then
+            getgenv().AuraName = 4
+        elseif mob == 'Light Aura' then
+            getgenv().AuraName = 5
+        elseif mob == 'Sun Aura' then
+            getgenv().AuraName = 6
+        elseif mob == 'Galaxy Aura' then
+            getgenv().AuraName = 7
+        elseif mob == 'Nuclear Aura' then
+            getgenv().AuraName = 8
+        elseif mob == 'Void Aura' then
+            getgenv().AuraName = 9
+        elseif mob == 'Plasma Aura' then
+            getgenv().AuraName = 10
+        elseif mob == 'Crystal Aura' then
+            getgenv().AuraName = 11
+        elseif mob == 'Soul Aura' then
+            getgenv().AuraName = 12
+        elseif mob == 'Hell Aura' then
+            getgenv().AuraName = 13
+        elseif mob == 'Electro Aura' then
+            getgenv().AuraName = 14
+        elseif mob == 'Alien Aura' then
+            getgenv().AuraName = 15
+        elseif mob == 'Prismatic Aura' then
+            getgenv().AuraName = 16
+        elseif mob == 'Atom Aura' then
+            getgenv().AuraName = 17
+        elseif mob == 'Fantasy Aura' then
+            getgenv().AuraName = 18
+        elseif mob == 'Yin Yang Aura' then
+            getgenv().AuraName = 19
+        elseif mob == 'Hypno Aura' then
+            getgenv().AuraName = 20
+        elseif mob == 'Shadow Aura' then
+            getgenv().AuraName = 21
+        elseif mob == 'Black Lightning Aura' then
+            getgenv().AuraName = 22
+        elseif mob == 'Destruction Aura' then
+            getgenv().AuraName = 23
+        elseif mob == 'Earth Aura' then
+            getgenv().AuraName = 24
+        elseif mob == 'Saturn Aura' then
+            getgenv().AuraName = 25
+        elseif mob == 'Godly Aura' then
+            getgenv().AuraName = 26
+        elseif mob == 'Universe Aura' then
+            getgenv().AuraName = 27
+        elseif mob == 'Aqua Aura' then
+            getgenv().AuraName = 28
+        elseif mob == 'Emoji Aura' then
+            getgenv().AuraName = 29
+        elseif mob == 'Enchanted Aura' then
+            getgenv().AuraName = 30
+        end
+    end)
+
+    -- Rebirth X
+    MainArSk:NewButton("Buy TapSkin", "select tapskin to buy", function()
+    local args = 
+    {[1] = getgenv().TapNumber}
+
+    game:GetService("ReplicatedStorage").Functions.TapSkin:InvokeServer(unpack(args))
+    end)
+
+    -- Rebirth X
+    MainArSk:NewDropdown("TapSkin Select", "select tapskin", {"Grass Skin", "Water Skin", "Light Skin", "Dark Skin", "Sun Skin", "Fire Skin", "Toxic Skin", "Cyber Skin", "Galaxy Skin", "Candy Skin", "Void Skin", "Powerful Skin", "Electro Skin", "Devil Skin", "Earth Skin", "Galactic Skin", "Saturn Skin", "Hacker Skin", "BlackHole Skin", "Funny Skin", "Moai Skin"}, function(mob)
+        if mob == 'Grass Skin' then
+            getgenv().TapNumber = 1 
+        elseif mob == 'Water Skin' then
+            getgenv().TapNumber = 2
+        elseif mob == 'Light Skin' then
+            getgenv().TapNumber = 3
+        elseif mob == 'Dark Skin' then
+            getgenv().TapNumber = 4
+        elseif mob == 'Sun Skin' then
+            getgenv().TapNumber = 5
+        elseif mob == 'Fire Skin' then
+            getgenv().TapNumber = 6
+        elseif mob == 'Toxic Skin' then
+            getgenv().TapNumber = 7
+        elseif mob == 'Cyber Skin' then
+            getgenv().TapNumber = 8
+        elseif mob == 'Galaxy Skin' then
+            getgenv().TapNumber = 9
+        elseif mob == 'Candy Skin' then
+            getgenv().TapNumber = 10
+        elseif mob == 'Void Skin' then
+            getgenv().TapNumber = 11
+        elseif mob == 'Powerful Skin' then
+            getgenv().TapNumber = 12
+        elseif mob == 'Electro Skin' then
+            getgenv().TapNumber = 13
+        elseif mob == 'Devil Skin' then
+            getgenv().TapNumber = 14
+        elseif mob == 'Earth Skin' then
+            getgenv().TapNumber = 15
+        elseif mob == 'Galactic Skin' then
+            getgenv().TapNumber = 16
+        elseif mob == 'Saturn Skin' then
+            getgenv().TapNumber = 17
+        elseif mob == 'Hacker Skin' then
+            getgenv().TapNumber = 18
+        elseif mob == 'BlackHole Skin' then
+            getgenv().TapNumber = 19
+        elseif mob == 'Funny Skin' then
+            getgenv().TapNumber = 20
+        elseif mob == 'Moai Skin' then
+            getgenv().TapNumber = 21
+        end
+    end)
+---------------------------------------------------------------------------------------------------------------------------------------
+    local Misc = Window:NewTab("Misc")
+    local MainMisc = Misc:NewSection("Main Misc")
+    -- Rebirth X
+    MainMisc:NewButton("MuteMusic", "Mutes the music", function()
+        local args = 
+        {[1] = "MuteMusic",
+        [2] = true}
+        game:GetService("ReplicatedStorage").Events.Setting:FireServer(unpack(args))
+    end)
+
+    -- Rebirth X
+    MainMisc:NewButton("MuteSounds", "Mutes the SOUNDS", function()
+        local args = {
+            [1] = "MuteSounds",
+            [2] = true
+        }
+        
+        game:GetService("ReplicatedStorage").Events.Setting:FireServer(unpack(args))
+    end)
+
+    -- Rebirth X
+    MainMisc:NewButton("HidePopUps", "hides the PopUps", function()
+        local args = {
+            [1] = "PopUp",
+            [2] = true
+        }
+        
+        game:GetService("ReplicatedStorage").Events.Setting:FireServer(unpack(args))
+    end)
+
+    -- Rebirth X
+    MainMisc:NewButton("HideOtherPets", "Hides other people's Pets", function()
+        local args = {
+            [1] = "HideOtherPets",
+            [2] = true
+        }
+        
+        game:GetService("ReplicatedStorage").Events.Setting:FireServer(unpack(args))
+    end)
+
+    -- Rebirth X
+    MainMisc:NewButton("HideYourPets", "Hides your Pets", function()
+        local args = {
+            [1] = "HideYourPets",
+            [2] = true
+        }
+        
+        game:GetService("ReplicatedStorage").Events.Setting:FireServer(unpack(args))
+    end)
+
+    -- Rebirth X
+    MainMisc:NewButton("HideBoosts", "Hides the Boosts on your screen", function()
+        local args = {
+            [1] = "HideBoosts",
+            [2] = true
+        }
+        
+        game:GetService("ReplicatedStorage").Events.Setting:FireServer(unpack(args))
+    end)
+
+    -- Rebirth X
+    MainMisc:NewButton("HidesAuras", "Hides auras", function()
+        local args = {
+            [1] = "HideAuras",
+            [2] = true
+        }
+        
+        game:GetService("ReplicatedStorage").Events.Setting:FireServer(unpack(args))
+    end)
+
+    -- Rebirth X
+    MainMisc:NewButton("Set Delete Common", "sets autodelete to Common", function()
         local args = {
             [1] = "Common",
             [2] = true
@@ -1216,7 +1660,7 @@ if game.PlaceId == 8540346411 then
     end)
 
     -- Rebirth X
-    MainRebirthX:NewButton("Set Delete Uncommon", "sets autodelete Uncommon", function()
+    MainMisc:NewButton("Set Delete Uncommon", "sets autodelete Uncommon", function()
         local args = {
             [1] = "Uncommon",
             [2] = true
@@ -1226,7 +1670,7 @@ if game.PlaceId == 8540346411 then
     end)
 
     -- Rebirth X
-    MainRebirthX:NewButton("Set Delete Rare", "sets autodelete Rare", function()
+    MainMisc:NewButton("Set Delete Rare", "sets autodelete Rare", function()
         local args = {
             [1] = "Rare",
             [2] = true
@@ -1236,7 +1680,7 @@ if game.PlaceId == 8540346411 then
     end)
 
     -- Rebirth X
-    MainRebirthX:NewButton("Set Delete Epic", "sets autodelete Epic", function()
+    MainMisc:NewButton("Set Delete Epic", "sets autodelete Epic", function()
         local args = {
             [1] = "Epic",
             [2] = true
@@ -1246,7 +1690,7 @@ if game.PlaceId == 8540346411 then
     end)
 
     -- Rebirth X
-    MainRebirthX:NewButton("Set Delete Legendary", "sets autodelete Legendary", function()
+    MainMisc:NewButton("Set Delete Legendary", "sets autodelete Legendary", function()
         local args = {
             [1] = "Legendary",
             [2] = true
@@ -1254,188 +1698,15 @@ if game.PlaceId == 8540346411 then
         
         game:GetService("ReplicatedStorage").Events.AutoDelete:FireServer(unpack(args))
     end)
-
-    -- Rebirth X
-    MainRebirthX:NewButton("Buy FreeAutoClicker", "free autoclick = slow, no upgrades", function()
-        local args = {
-            [1] = "FreeAutoClicker"
-        }
-        
-        game:GetService("ReplicatedStorage").Functions.Upgrade:InvokeServer(unpack(args))
-    end)  
-
-    -- Rebirth X
-    MainRebirthX:NewLabel("Space upgrades")
-
-    -- Rebirth X
-    MainRebirthX:NewButton("Buy teleport", "allows you to teleport to unlocked areas", function()
-        local args = {
-            [1] = "Teleport",
-            [2] = "space"
-        }
-        game:GetService("ReplicatedStorage").Functions.Upgrade:InvokeServer(unpack(args))
-    end)
-
-    -- Rebirth X
-    MainRebirthX:NewToggle("Buy ClickMultiSpace", "auto buys click multi space", function(state)
-        if state then
-            _G.CMSAB = true;
-
-    while _G.CMSAB == true do
-    local args = {
-        [1] = "ClickMultiplier",
-        [2] = "space"
-    }
-
-    game:GetService("ReplicatedStorage").Functions.Upgrade:InvokeServer(unpack(args))
-        wait(0.000000000000000000000000000000000005)
-    end
-        else
-            _G.CMSAB = false;
-        end
-    end)
-
-    -- Rebirth X
-    MainRebirthX:NewToggle("Buy ChestCoolDown", "auto buys ChestCoolDown", function(state)
-        if state then
-            _G.ChestCoolDown = true;
-
-    while _G.ChestCoolDown == true do
-    local args = {
-        [1] = "ChestCountdown",
-        [2] = "space"
-    }
-
-    game:GetService("ReplicatedStorage").Functions.Upgrade:InvokeServer(unpack(args))
-        wait(0.000000000000000000000000000000000005)
-    end
-        else
-            _G.ChestCoolDown = false;
-        end
-    end)
-
-    -- Rebirth X
-    MainRebirthX:NewToggle("Buy BankSpace", "auto buys bank space", function(state)
-        if state then
-            _G.Bspace = true;
-
-    while _G.Bspace == true do
-    local args = {
-        [1] = "BankSpace",
-        [2] = "space"
-    }
-
-    game:GetService("ReplicatedStorage").Functions.Upgrade:InvokeServer(unpack(args))
-        wait(0.000000000000000000000000000000000005)
-    end
-        else
-            _G.Bspace = false;
-        end
-    end)
-
-    -- Rebirth X
-    MainRebirthX:NewToggle("Buy MaxCombo", "auto buys max Combo", function(state)
-        if state then
-            _G.MaxCSAB = true;
-
-    while _G.MaxCSAB == true do
-    local args = {
-        [1] = "MaxCombo",
-        [2] = "space"
-    }
-
-    game:GetService("ReplicatedStorage").Functions.Upgrade:InvokeServer(unpack(args))
-        wait(0.000000000000000000000000000000000005)
-    end
-        else
-            _G.MaxCSAB = false;
-        end
-    end)
-
-    -- Rebirth X
-    MainRebirthX:NewToggle("Buy PetEquipSpace", "auto buys pet equip", function(state)
-        if state then
-            _G.PetEquipSAB = true;
-
-    while _G.PetEquipSAB == true do
-    local args = {
-        [1] = "PetEquip",
-        [2] = "space"
-    }
-
-    game:GetService("ReplicatedStorage").Functions.Upgrade:InvokeServer(unpack(args))
-        wait(0.000000000000000000000000000000000005)
-    end
-        else
-            _G.PetEquipSAB = false;
-        end
-    end)
-
-    -- Rebirth X
-    MainRebirthX:NewToggle("Buy LuckMultiSpace", "auto buys luck multi", function(state)
-        if state then
-            _G.LuckMSAB = true;
-
-    while _G.LuckMSAB == true do
-    local args = {
-        [1] = "LuckMultiplier",
-        [2] = "space"
-    }
-
-    game:GetService("ReplicatedStorage").Functions.Upgrade:InvokeServer(unpack(args))
-        wait(0.000000000000000000000000000000000005)
-    end
-        else
-            _G.LuckMSAB = false;
-        end
-    end)
-
-    -- Rebirth X
-    MainRebirthX:NewToggle("Buy GoldenChance", "auto buys goldenchance", function(state)
-        if state then
-            _G.GoldCSAB = true;
-
-    while _G.GoldCSAB == true do
-    local args = {
-        [1] = "GoldenChance",
-        [2] = "space"
-    }
-
-    game:GetService("ReplicatedStorage").Functions.Upgrade:InvokeServer(unpack(args))
-        wait(0.000000000000000000000000000000000005)
-    end
-
-        else
-            _G.GoldCSAB = false;
-        end
-    end)
-
-    -- Rebirth X
-    MainRebirthX:NewToggle("AutoToxicChance", "auto buys toxic chance", function(state)
-        if state then
-            _G.ToxicCSAB = true;
-
-    while _G.ToxicCSAB == true do
-    local args = {
-        [1] = "ToxicChance",
-        [2] = "space"
-    }
-
-    game:GetService("ReplicatedStorage").Functions.Upgrade:InvokeServer(unpack(args))
-        wait(0.000000000000000000000000000000000005)
-    end
-        else
-            _G.ToxicCSAB = false;
-        end
-    end)
-
-
+---------------------------------------------------------------------------------------------------------------------------------------
     ToggleGui()
     JoinDiscord()
     SupportedGames()
 end
 ---------------------------------------------------------------------------------------------------------------------------------------
 if game.PlaceId == 8750997647 then
+    GameSup()
+    Notification.new("info", "Game: Tapping Legends X", "Enjoy Hacking "..getgenv().Emoji, true, 3)
     local TappingX = Window:NewTab("Tapping legends X")
     local MainTappingX = TappingX:NewSection("Basic Settings")
 
@@ -1444,7 +1715,7 @@ if game.PlaceId == 8750997647 then
 
         local args = 
     {[1] = "Purchase",
-    [2] = _G.TapSkinName}
+    [2] = getgenv().TapSkinName}
         
         game:GetService("ReplicatedStorage").Remotes.TapSkinAction:FireServer(unpack(args))
         
@@ -1453,43 +1724,43 @@ if game.PlaceId == 8750997647 then
     -- Tapping Legends X
     MainTappingX:NewDropdown("Select TapSkin", "lets you buy ", {"PixLized", "Rocky", "Hexed", "Streak", "Aurora", "Magical", "Aesthetic", "Emerald", "Swirl", "Lightning", "Energy", "Galactical", "Vibrant", "HellSkin", "FireWork", "Circuit", "Warped", "Bubbly", "Ripple",}, function(mob)
         if mob == 'PixLized' then
-            _G.TapSkinName = 1
+            getgenv().TapSkinName = 1
         elseif mob == 'Rocky' then
-            _G.TapSkinName = 2
+            getgenv().TapSkinName = 2
         elseif mob == 'Hexed' then
-            _G.TapSkinName = 3
+            getgenv().TapSkinName = 3
         elseif mob == 'Streak' then
-            _G.TapSkinName = 4
+            getgenv().TapSkinName = 4
         elseif mob == 'Aurora' then
-            _G.TapSkinName = 5
+            getgenv().TapSkinName = 5
         elseif mob == 'Magical' then
-            _G.TapSkinName = 6
+            getgenv().TapSkinName = 6
         elseif mob == 'Aesthetic' then
-            _G.TapSkinName = 7
+            getgenv().TapSkinName = 7
         elseif mob == 'Emerald' then
-            _G.TapSkinName = 8
+            getgenv().TapSkinName = 8
         elseif mob == 'Swirl' then
-            _G.TapSkinName = 9
+            getgenv().TapSkinName = 9
         elseif mob == 'Lightning' then
-            _G.TapSkinName = 10
+            getgenv().TapSkinName = 10
         elseif mob == 'Energy' then
-            _G.TapSkinName = 11
+            getgenv().TapSkinName = 11
         elseif mob == 'Galactical' then
-            _G.TapSkinName = 12
+            getgenv().TapSkinName = 12
         elseif mob == 'Vibrant' then
-            _G.TapSkinName = 13
+            getgenv().TapSkinName = 13
         elseif mob == 'HellSkin' then
-            _G.TapSkinName = 14
+            getgenv().TapSkinName = 14
         elseif mob == 'FireWork' then
-            _G.TapSkinName = 15
+            getgenv().TapSkinName = 15
         elseif mob == 'Circuit' then
-            _G.TapSkinName = 16
+            getgenv().TapSkinName = 16
         elseif mob == 'Warped' then
-            _G.TapSkinName = 17
+            getgenv().TapSkinName = 17
         elseif mob == 'Bubbly' then
-            _G.TapSkinName = 18
+            getgenv().TapSkinName = 18
         elseif mob == 'Ripple' then
-            _G.TapSkinName = 19
+            getgenv().TapSkinName = 19
         end
     end)
 
@@ -1497,7 +1768,7 @@ if game.PlaceId == 8750997647 then
     MainTappingX:NewButton("TapSkin Equip", "equips tapskin that you own", function()
         local args = 
     {[1] = "Equip",
-    [2] = _G.TapSkinNameEquip}
+    [2] = getgenv().TapSkinNameEquip}
         
         game:GetService("ReplicatedStorage").Remotes.TapSkinAction:FireServer(unpack(args))
     end)
@@ -1505,67 +1776,67 @@ if game.PlaceId == 8750997647 then
     -- Tapping Legends X
     MainTappingX:NewDropdown("Select TapSkin", "lets you buy ", {"PixLized", "Rocky", "Hexed", "Streak", "Aurora", "Magical", "Aesthetic", "Emerald", "Swirl", "Lightning", "Energy", "Galactical", "Vibrant", "HellSkin", "FireWork", "Circuit", "Warped", "Bubbly", "Ripple",}, function(mob)
         if mob == 'PixLized' then
-            _G.TapSkinNameEquip = 1
+            getgenv().TapSkinNameEquip = 1
         elseif mob == 'Rocky' then
-            _G.TapSkinNameEquip = 2
+            getgenv().TapSkinNameEquip = 2
         elseif mob == 'Hexed' then
-            _G.TapSkinNameEquip = 3
+            getgenv().TapSkinNameEquip = 3
         elseif mob == 'Streak' then
-            _G.TapSkinNameEquip = 4
+            getgenv().TapSkinNameEquip = 4
         elseif mob == 'Aurora' then
-            _G.TapSkinNameEquip = 5
+            getgenv().TapSkinNameEquip = 5
         elseif mob == 'Magical' then
-            _G.TapSkinNameEquip = 6
+            getgenv().TapSkinNameEquip = 6
         elseif mob == 'Aesthetic' then
-            _G.TapSkinNameEquip = 7
+            getgenv().TapSkinNameEquip = 7
         elseif mob == 'Emerald' then
-            _G.TapSkinNameEquip = 8
+            getgenv().TapSkinNameEquip = 8
         elseif mob == 'Swirl' then
-            _G.TapSkinNameEquipEquip = 9
+            getgenv().TapSkinNameEquipEquip = 9
         elseif mob == 'Lightning' then
-            _G.TapSkinNameEquip = 10
+            getgenv().TapSkinNameEquip = 10
         elseif mob == 'Energy' then
-            _G.TapSkinNameEquip = 11
+            getgenv().TapSkinNameEquip = 11
         elseif mob == 'Galactical' then
-            _G.TapSkinNameEquip = 12
+            getgenv().TapSkinNameEquip = 12
         elseif mob == 'Vibrant' then
-            _G.TapSkinNameEquip = 13
+            getgenv().TapSkinNameEquip = 13
         elseif mob == 'HellSkin' then
-            _G.TapSkinNameEquip = 14
+            getgenv().TapSkinNameEquip = 14
         elseif mob == 'FireWork' then
-            _G.TapSkinNameEquip = 15
+            getgenv().TapSkinNameEquip = 15
         elseif mob == 'Circuit' then
-            _G.TapSkinNameEquip = 16
+            getgenv().TapSkinNameEquip = 16
         elseif mob == 'Warped' then
-            _G.TapSkinNameEquip = 17
+            getgenv().TapSkinNameEquip = 17
         elseif mob == 'Bubbly' then
-            _G.TapSkinNameEquip = 18
+            getgenv().TapSkinNameEquip = 18
         elseif mob == 'Ripple' then
-            _G.TapSkinNameEquip = 19
+            getgenv().TapSkinNameEquip = 19
         end
     end)
 
     -- Tapping Legends X
     MainTappingX:NewToggle("Auto Tap", "Taps very fast for you", function(state)
         if state then
-            _G.autoTap = true;
+            getgenv().autoTap = true;
 
-    while _G.autoTap == true do
+    while getgenv().autoTap == true do
         game:GetService("ReplicatedStorage").Remotes.Tap:FireServer()
         wait(0.0000000000000000000000000000000000000000000000000000000000000000000000000000000000005)
     end
         else
-            _G.autoTap = false;
+            getgenv().autoTap = false;
         end
     end)
     -- Tapping Legends X
     MainTappingX:NewToggle("Auto Rebirth", "auto rebirths for you", function(state)
         if state then
-            _G.autoRebirth = true;
+            getgenv().autoRebirth = true;
 
-    while _G.autoRebirth == true do
+    while getgenv().autoRebirth == true do
         
-    local args = {[1] = _G.rebirthAmount}
+    local args = {[1] = getgenv().rebirthAmount}
 
 
     game:GetService("ReplicatedStorage").Remotes.Rebirth:FireServer(unpack(args))
@@ -1573,7 +1844,7 @@ if game.PlaceId == 8750997647 then
         wait(0.0000000000000000000000000000000000000000000000000000000000000000000000000000000000005)
     end
         else
-            _G.autoRebirth = false;
+            getgenv().autoRebirth = false;
         end
     end)
 
@@ -1581,75 +1852,75 @@ if game.PlaceId == 8750997647 then
 
     MainTappingX:NewDropdown("Rebirth Amount", "pick the rebirths that you can do", {"1","5","20", "80", "400", "2k", "10k", "40k", "100k", "400k", "2M", "10M", "40M", "100M", "500M", "2B", "10B", "40B", "200B", "1T", "2T", "10T", "40T", "100T", "500T", "2Qd", "10Qd", "100Qd", "500Qd", "2Qn", "10Qn", "40Qn", "200Qn", "1Sx", "5Sx"}, function(mob)
         if mob == '1' then
-            _G.rebirthAmount = 1 
+            getgenv().rebirthAmount = 1 
         elseif mob == '5' then
-            _G.rebirthAmount = 2 
+            getgenv().rebirthAmount = 2 
         elseif mob == '20' then
-            _G.rebirthAmount = 3
+            getgenv().rebirthAmount = 3
         elseif mob == '80' then
-            _G.rebirthAmount = 4 
+            getgenv().rebirthAmount = 4 
         elseif mob == '400' then
-            _G.rebirthAmount = 5 
+            getgenv().rebirthAmount = 5 
         elseif mob == '2K' then
-            _G.rebirthAmount = 6
+            getgenv().rebirthAmount = 6
         elseif mob == '10K' then
-            _G.rebirthAmount = 7
+            getgenv().rebirthAmount = 7
         elseif mob == '40K' then
-            _G.rebirthAmount = 8
+            getgenv().rebirthAmount = 8
         elseif mob == '100K' then
-            _G.rebirthAmount = 9
+            getgenv().rebirthAmount = 9
         elseif mob == '400K' then
-            _G.rebirthAmount = 10
+            getgenv().rebirthAmount = 10
         elseif mob == '2M' then
-            _G.rebirthAmount = 11
+            getgenv().rebirthAmount = 11
         elseif mob == '10M' then
-            _G.rebirthAmount = 12
+            getgenv().rebirthAmount = 12
         elseif mob == '40M' then
-            _G.rebirthAmount = 13
+            getgenv().rebirthAmount = 13
         elseif mob == '100M' then
-            _G.rebirthAmount = 14
+            getgenv().rebirthAmount = 14
         elseif mob == '500M' then
-            _G.rebirthAmount = 15
+            getgenv().rebirthAmount = 15
         elseif mob == '2B' then
-            _G.rebirthAmount = 16
+            getgenv().rebirthAmount = 16
         elseif mob == '10B' then
-            _G.rebirthAmount = 17
+            getgenv().rebirthAmount = 17
         elseif mob == '40B' then
-            _G.rebirthAmount = 18
+            getgenv().rebirthAmount = 18
         elseif mob == '200B' then
-            _G.rebirthAmount = 19
+            getgenv().rebirthAmount = 19
         elseif mob == '1T' then
-            _G.rebirthAmount = 20
+            getgenv().rebirthAmount = 20
         elseif mob == '2T' then
-            _G.rebirthAmount = 21
+            getgenv().rebirthAmount = 21
         elseif mob == '10T' then
-            _G.rebirthAmount = 22
+            getgenv().rebirthAmount = 22
         elseif mob == '40T' then
-            _G.rebirthAmount = 23
+            getgenv().rebirthAmount = 23
         elseif mob == '100T' then
-            _G.rebirthAmount = 24
+            getgenv().rebirthAmount = 24
         elseif mob == '500T' then
-            _G.rebirthAmount = 25
+            getgenv().rebirthAmount = 25
         elseif mob == '2Qd' then
-            _G.rebirthAmount = 26
+            getgenv().rebirthAmount = 26
         elseif mob == '10Qd' then
-            _G.rebirthAmount = 27
+            getgenv().rebirthAmount = 27
         elseif mob == '100Qd' then
-            _G.rebirthAmount = 28
+            getgenv().rebirthAmount = 28
         elseif mob == '500Qd' then
-            _G.rebirthAmount = 29
+            getgenv().rebirthAmount = 29
         elseif mob == '2Qn' then
-            _G.rebirthAmount = 30
+            getgenv().rebirthAmount = 30
         elseif mob == '10Qn' then
-            _G.rebirthAmount = 31
+            getgenv().rebirthAmount = 31
         elseif mob == '40Qn' then
-            _G.rebirthAmount = 32
+            getgenv().rebirthAmount = 32
         elseif mob == '200Qn' then
-            _G.rebirthAmount = 33
+            getgenv().rebirthAmount = 33
         elseif mob == '1Sx' then
-            _G.rebirthAmount = 34
+            getgenv().rebirthAmount = 34
         elseif mob == '5Sx' then
-            _G.rebirthAmount = 35
+            getgenv().rebirthAmount = 35
         end
     end)
 
@@ -1665,22 +1936,22 @@ if game.PlaceId == 8750997647 then
     -- Tapping Legends X
     MainTappingX:NewToggle("Auto Best Pet", "Equips your best Pet", function(state)
         if state then
-            _G.UnequipAll = true;
-            while _G.UnequipAll == true do
+            getgenv().UnequipAll = true;
+            while getgenv().UnequipAll == true do
                 game:GetService("ReplicatedStorage").Remotes.UnequipAll:InvokeServer()
                 wait(0.0000000000000000005)
                 game:GetService("ReplicatedStorage").Remotes.EquipBest:InvokeServer()
                 wait(0.5)
             end
         else
-            _G.UnequipAll = false;
+            getgenv().UnequipAll = false;
         end
     end)
 
     -- Tapping Legends X
     MainTappingX:NewButton("Teleport World", "Select world to teleport", function()
     local args = 
-    {[1] = _G.selectedWorld}
+    {[1] = getgenv().selectedWorld}
 
     game:GetService("ReplicatedStorage").Remotes.TeleportToArea:FireServer(unpack(args))
 
@@ -1689,135 +1960,135 @@ if game.PlaceId == 8750997647 then
     -- Tapping Legends X
     MainTappingX:NewDropdown("Teleport Select", "Select World", {"Spawn","Forest","Desert", "Winter", "Lava", "Aqua", "Sakura", "Mines", "Galaxy", "Heaven", "Hell", "Tech", "Steampunk", "Swamp", "Candy", "Magic", "Fantasy", "Toy", "Retro", "Lab", "Temple"}, function(mob)
         if mob == 'Spawn' then
-            _G.selectedWorld = 1 
+            getgenv().selectedWorld = 1 
         elseif mob == 'Forest' then
-            _G.selectedWorld = 2 
+            getgenv().selectedWorld = 2 
         elseif mob == 'Desert' then
-            _G.selectedWorld = 3
+            getgenv().selectedWorld = 3
         elseif mob == 'Winter' then
-            _G.selectedWorld = 4 
+            getgenv().selectedWorld = 4 
         elseif mob == 'Lava' then
-            _G.selectedWorld = 5 
+            getgenv().selectedWorld = 5 
         elseif mob == 'Aqua' then
-            _G.selectedWorld = 6
+            getgenv().selectedWorld = 6
         elseif mob == 'Sakura' then
-            _G.selectedWorld = 7
+            getgenv().selectedWorld = 7
         elseif mob == 'Mines' then
-            _G.selectedWorld = 8
+            getgenv().selectedWorld = 8
         elseif mob == 'Galaxy' then
-            _G.selectedWorld = 9
+            getgenv().selectedWorld = 9
         elseif mob == 'Heaven' then
-            _G.selectedWorld = 10
+            getgenv().selectedWorld = 10
         elseif mob == 'Hell' then
-            _G.selectedWorld = 11
+            getgenv().selectedWorld = 11
         elseif mob == 'Tech' then
-            _G.selectedWorld = 12
+            getgenv().selectedWorld = 12
         elseif mob == 'Steampunk' then
-            _G.selectedWorld = 13
+            getgenv().selectedWorld = 13
         elseif mob == 'Swamp' then
-            _G.selectedWorld = 14
+            getgenv().selectedWorld = 14
         elseif mob == 'Candy' then
-            _G.selectedWorld = 15
+            getgenv().selectedWorld = 15
         elseif mob == 'Magic' then
-            _G.selectedWorld = 16
+            getgenv().selectedWorld = 16
         elseif mob == 'Fantasy' then
-            _G.selectedWorld = 17
+            getgenv().selectedWorld = 17
         elseif mob == 'Toy' then
-            _G.selectedWorld = 18
+            getgenv().selectedWorld = 18
         elseif mob == 'Retro' then
-            _G.selectedWorld = 19
+            getgenv().selectedWorld = 19
         elseif mob == 'Lab' then
-            _G.selectedWorld = 20
+            getgenv().selectedWorld = 20
         elseif mob == 'Temple' then
-            _G.selectedWorld = 21
+            getgenv().selectedWorld = 21
         end
     end)
 
     -- Tapping Legends X
     MainTappingX:NewToggle("Auto Open Egg", "Select HatchAmount, EggName before turning on", function(state)
         if state then
-            _G.AutoOpen = true;
+            getgenv().AutoOpen = true;
 
-            while _G.AutoOpen == true do
+            while getgenv().AutoOpen == true do
 
     local args = 
-    {[1] = _G.EggName,
-    [2] = _G.HatchAmount}
+    {[1] = getgenv().EggName,
+    [2] = getgenv().HatchAmount}
 
     game:GetService("ReplicatedStorage").Remotes.BuyEgg:InvokeServer(unpack(args))
             wait(0.0000000000000000000000000000000000000000000000000000000000000000000000000000000000005)
     end
         else
-            _G.AutoOpen = false;
+            getgenv().AutoOpen = false;
         end
     end)
 
     -- Tapping Legneds X
     MainTappingX:NewDropdown("EggName", "Select Egg Name", {"Basic Egg","Rare Egg","Forest Egg","Desert Egg","Winter Egg", "Lava Egg", "Aqua Egg", "Sakura Egg", "Mines Egg", "Galaxy Egg", "Heaven Egg", "Hell Egg", "Tech Egg", "Steampunk Egg", "Swamp Egg", "Candy Egg", "Magic Egg", "Fantasy Egg", "Toy Egg", "Retro Egg", "Lab Egg", "Temple Egg"}, function(mob)
         if mob == 'Basic Egg' then
-            _G.EggName = "Basic Egg"
+            getgenv().EggName = "Basic Egg"
         elseif mob == 'Rare Egg' then
-            _G.EggName = "Rare Egg"
+            getgenv().EggName = "Rare Egg"
         elseif mob == 'Forest Egg' then
-            _G.EggName = "Forest Egg"
+            getgenv().EggName = "Forest Egg"
         elseif mob == 'Desert Egg' then
-            _G.EggName = "Desert Egg"
+            getgenv().EggName = "Desert Egg"
         elseif mob == 'Winter Egg' then
-            _G.EggName = "Winter Egg"
+            getgenv().EggName = "Winter Egg"
         elseif mob == 'Lava Egg' then
-            _G.EggName = "Lava Egg"
+            getgenv().EggName = "Lava Egg"
         elseif mob == 'Aqua Egg' then
-            _G.EggName = "Aqua Egg"
+            getgenv().EggName = "Aqua Egg"
         elseif mob == 'Sakura Egg' then
-            _G.EggName = "Sakura"
+            getgenv().EggName = "Sakura"
         elseif mob == 'Mines Egg' then
-            _G.EggName = "Mines Egg"
+            getgenv().EggName = "Mines Egg"
         elseif mob == 'Galaxy Egg' then
-            _G.EggName = "Galaxy Egg"
+            getgenv().EggName = "Galaxy Egg"
         elseif mob == 'Heaven Egg' then
-            _G.EggName = "Heaven Egg"
+            getgenv().EggName = "Heaven Egg"
         elseif mob == 'Hell Egg' then
-            _G.EggName = "Hell egg"
+            getgenv().EggName = "Hell egg"
         elseif mob == 'Tech Egg' then
-            _G.EggName = "Tech Egg"
+            getgenv().EggName = "Tech Egg"
         elseif mob == 'Steampunk Egg' then
-            _G.EggName = "Steampunk Egg"
+            getgenv().EggName = "Steampunk Egg"
         elseif mob == 'Swamp Egg' then
-            _G.EggName = "Swamp Egg"
+            getgenv().EggName = "Swamp Egg"
         elseif mob == 'Candy Egg' then
-            _G.EggName = "Candy Egg"
+            getgenv().EggName = "Candy Egg"
         elseif mob == 'Magic Egg' then
-            _G.EggName = "Magic Egg"
+            getgenv().EggName = "Magic Egg"
         elseif mob == 'Fantasy Egg' then
-            _G.EggName = "Fantasy Egg"
+            getgenv().EggName = "Fantasy Egg"
         elseif mob == 'Toy Egg' then
-            _G.EggName = "Toy Egg"
+            getgenv().EggName = "Toy Egg"
         elseif mob == 'Retro Egg' then
-            _G.EggName = 'Retro Egg'
+            getgenv().EggName = 'Retro Egg'
         elseif mob == 'Lab Egg' then
-            _G.EggName = 'Lab Egg'
+            getgenv().EggName = 'Lab Egg'
         elseif mob == 'Temple Egg' then
-            _G.EggName = 'Temple Egg'
+            getgenv().EggName = 'Temple Egg'
         end
     end)
 
     -- Tapping Legends X
     MainTappingX:NewDropdown("Hatch Amount", "Select amount to hatch", {"1", "3", "4"}, function(mob)
         if mob == '1' then
-            _G.HatchAmount = 1 
+            getgenv().HatchAmount = 1 
         elseif mob == '3' then
-            _G.HatchAmount = 3
+            getgenv().HatchAmount = 3
         elseif mob == '4' then
-            _G.HatchAmount = 4
+            getgenv().HatchAmount = 4
         end
     end)
 
     -- Tapping Legends X
     MainTappingX:NewToggle("Upgrade Tap Multi", "auto upgrades tap Multi", function(state)
         if state then
-            _G.autotapupgrade = true;
+            getgenv().autotapupgrade = true;
 
-    while _G.autotapupgrade == true do
+    while getgenv().autotapupgrade == true do
     local args = {
         [1] = "Ruby",
         [2] = "TapMultiplier"
@@ -1827,7 +2098,7 @@ if game.PlaceId == 8750997647 then
         wait(0.0000000000000000000000000000000000000000000000000000000000000000000000000000000000005)
     end
         else
-            _G.autotapupgrade = false;
+            getgenv().autotapupgrade = false;
         end
     end)
 
@@ -1844,9 +2115,9 @@ if game.PlaceId == 8750997647 then
     -- Tapping Legends X
     MainTappingX:NewToggle("More rebirths", "Auto buys more rebirths", function(state)
         if state then
-            _G.autoRebirthupgrade = true;
+            getgenv().autoRebirthupgrade = true;
 
-    while _G.autoRebirthupgrade == true do
+    while getgenv().autoRebirthupgrade == true do
     local args = {
         [1] = "Ruby",
         [2] = "RebirthsUpgrade"
@@ -1857,7 +2128,7 @@ if game.PlaceId == 8750997647 then
         wait(0.0000000000000000000000000000000000000000000000000000000000000000000000000000000000005)
     end
         else
-            _G.autoRebirthupgrade = false;
+            getgenv().autoRebirthupgrade = false;
         end
     end)
 
@@ -1874,9 +2145,9 @@ if game.PlaceId == 8750997647 then
     -- Tapping Legends X
     MainTappingX:NewToggle("More Storage", "auto buys Storage", function(state)
         if state then
-            _G.autoStorgeupgrade = true;
+            getgenv().autoStorgeupgrade = true;
 
-    while _G.Storageupgrade == true do
+    while getgenv().Storageupgrade == true do
     local args = {
         [1] = "Ruby",
         [2] = "PetStorage"
@@ -1886,16 +2157,16 @@ if game.PlaceId == 8750997647 then
         wait(0.0000000000000000000000000000000000000000000000000000000000000000000000000000000000005)
     end
         else
-            _G.autoStorgeupgrade = false;
+            getgenv().autoStorgeupgrade = false;
         end
     end)
 
     -- Tapping Legends X
     MainTappingX:NewToggle("Auto Buy WalkSpeed", "auto buys more WalkSpeed", function(state)
         if state then
-            _G.autoWalkupgrade = true;
+            getgenv().autoWalkupgrade = true;
 
-    while _G.autoWalkupgrade == true do
+    while getgenv().autoWalkupgrade == true do
     local args = {
         [1] = "Ruby",
         [2] = "WalkSpeed"
@@ -1905,16 +2176,16 @@ if game.PlaceId == 8750997647 then
         wait(0.0000000000000000000000000000000000000000000000000000000000000000000000000000000000005)
     end
         else
-            _G.autoWalkupgrade = false;
+            getgenv().autoWalkupgrade = false;
         end
     end)
 
     -- Tapping Legends X
     MainTappingX:NewToggle("Crit Chance", "auto buys crit Chance", function(state)
         if state then
-            _G.autoCritupgrade = true;
+            getgenv().autoCritupgrade = true;
 
-    while _G.autoCritupgrade == true do
+    while getgenv().autoCritupgrade == true do
         
     local args = {
         [1] = "Ruby",
@@ -1925,16 +2196,16 @@ if game.PlaceId == 8750997647 then
         wait(0.0000000000000000000000000000000000000000000000000000000000000000000000000000000000005)
     end
         else
-            _G.autoCritupgrade = false;
+            getgenv().autoCritupgrade = false;
         end
     end)
 
     -- Tapping Legends X
     MainTappingX:NewToggle("Autoclicker Multi", "auto buys autoclick Multi", function(state)
         if state then
-            _g.autoMultiUpgrade = true;
+            getgenv().autoMultiUpgrade = true;
 
-    while _G.autoMultiUpgrade == true do
+    while getgenv().autoMultiUpgrade == true do
         
     local args = {
         [1] = "Ruby",
@@ -1945,16 +2216,16 @@ if game.PlaceId == 8750997647 then
         wait(0.0000000000000000000000000000000000000000000000000000000000000000000000000000000000005)
     end
         else
-            _g.autoMultiUpgrade = false;
+            getgenv().autoMultiUpgrade = false;
         end
     end)
 
     -- Tapping Legends X
     MainTappingX:NewToggle("Max Combo", "auto buys max Combo", function(state)
         if state then
-            _G.autoCombo = true;
+            getgenv().autoCombo = true;
 
-    while _G.autoCombo == true do
+    while getgenv().autoCombo == true do
         
     local args = {
         [1] = "Ruby",
@@ -1965,15 +2236,15 @@ if game.PlaceId == 8750997647 then
         wait(0.0000000000000000000000000000000000000000000000000000000000000000000000000000000000005)
     end
         else
-            _G.autoCombo = false;
+            getgenv().autoCombo = false;
         end
     end)
 
     -- Tapping Legends X
     MainTappingX:NewToggle("better pet stats", "auto buys pet stats", function(state)
         if state then
-            _G.BetterStats = true;
-            while _G.BetterStats == true do
+            getgenv().BetterStats = true;
+            while getgenv().BetterStats == true do
     local args = {
         [1] = "Ruby",
         [2] = "BetterPetStats"
@@ -1983,16 +2254,16 @@ if game.PlaceId == 8750997647 then
         wait(0.0000000000000000000000000000000000000000000000000000000000000000000000000000000000005)
             end
         else
-            _G.BetterStats = false;
+            getgenv().BetterStats = false;
         end
     end)
 
     -- Tapping Legends X
     MainTappingX:NewToggle("Achievement Luck", "auto buys AchievementLuck", function(state)
         if state then
-            _G.AutoLuck = true;
+            getgenv().AutoLuck = true;
 
-    while _g.AutoLuck == true do
+    while getgenv().AutoLuck == true do
         
     local args = {
         [1] = "Ruby",
@@ -2003,15 +2274,15 @@ if game.PlaceId == 8750997647 then
         wait(0.0000000000000000000000000000000000000000000000000000000000000000000000000000000000005)
     end
         else
-            _G.AutoLuck = false;
+            getgenv().AutoLuck = false;
         end
     end)
 
     -- Tapping Legends X
     MainTappingX:NewToggle("World boost multi", "auto buys world boost multi", function(state)
         if state then
-            _G.BoostMulti = true;
-        while _G.BoostMulti == true do
+            getgenv().BoostMulti = true;
+        while getgenv().BoostMulti == true do
     local args = {
         [1] = "Tokens",
         [2] = "WorldBoost"
@@ -2020,16 +2291,16 @@ if game.PlaceId == 8750997647 then
     wait(0.0000000000000000000000000000000000000000000000000000000000000000000000000000000000005)
         end
     else
-        _G.BoostMulti = false;
+        getgenv().BoostMulti = false;
     end  
     end)
 
     -- Tapping Legends X
     MainTappingX:NewToggle("ReEnchant", "auto buy ReEnchant", function(state)
         if state then
-            _G.autoEnchant = true;
+            getgenv().autoEnchant = true;
 
-    while _G.autoEnchant == true do
+    while getgenv().autoEnchant == true do
         
     local args = {
         [1] = "Ruby",
@@ -2040,16 +2311,16 @@ if game.PlaceId == 8750997647 then
         wait(0.0000000000000000000000000000000000000000000000000000000000000000000000000000000000005)
     end
         else
-            _G.autoEnchant = false;
+            getgenv().autoEnchant = false;
         end
     end)
 
     -- Tapping Legends X
     MainTappingX:NewToggle("TapDamage", "auto buys TapDamage", function(state)
         if state then
-            _G.autoDamage = true;
+            getgenv().autoDamage = true;
 
-    while _G.autoDamage == true do
+    while getgenv().autoDamage == true do
         
     local args = {
         [1] = "Tokens",
@@ -2060,16 +2331,16 @@ if game.PlaceId == 8750997647 then
         wait(0.0000000000000000000000000000000000000000000000000000000000000000000000000000000000005)
     end
         else
-            _G.autoDamage = false;
+            getgenv().autoDamage = false;
         end
     end)
 
     -- Tapping Legends X
     MainTappingX:NewToggle("More Equipped Pets", "auto buys pet equip", function(state)
         if state then
-            _G.morePets = true;
+            getgenv().morePets = true;
 
-    while _G.morePets == true do
+    while getgenv().morePets == true do
         
     local args = {
         [1] = "Tokens",
@@ -2080,16 +2351,16 @@ if game.PlaceId == 8750997647 then
         wait(0.0000000000000000000000000000000000000000000000000000000000000000000000000000000000005)
     end
         else
-            _G.morePets = false;
+            getgenv().morePets = false;
         end
     end)
 
     -- Tapping Legends X
     MainTappingX:NewToggle("Gold Chance", "auto buys GoldChance", function(state)
         if state then
-            _G.GoldChance = true;
+            getgenv().GoldChance = true;
 
-    while _G.GoldChance == true do
+    while getgenv().GoldChance == true do
         
     local args = {
         [1] = "Tokens",
@@ -2100,16 +2371,16 @@ if game.PlaceId == 8750997647 then
         wait(0.0000000000000000000000000000000000000000000000000000000000000000000000000000000000005)
     end
         else
-            _G.GoldChance = false;
+            getgenv().GoldChance = false;
         end
     end)
 
     -- Tapping Legends X
     MainTappingX:NewToggle("Fast Eggs 'Needs Tokens' ", "auto buys FasterEggs", function(state)
         if state then
-            _G.FastEgg = true;
+            getgenv().FastEgg = true;
 
-    while _G.FastEgg == true do
+    while getgenv().FastEgg == true do
         
     local args = {
         [1] = "Tokens",
@@ -2127,9 +2398,9 @@ if game.PlaceId == 8750997647 then
     -- Tapping Legends X
     MainTappingX:NewToggle("More Luck", "auto buys more luck", function(state)
         if state then
-            _G.MoreLuck = true;
+            getgenv().MoreLuck = true;
 
-    while _G.MoreLuck == true do
+    while getgenv().MoreLuck == true do
         
     local args = {
         [1] = "Tokens",
@@ -2140,16 +2411,16 @@ if game.PlaceId == 8750997647 then
         wait(0.0000000000000000000000000000000000000000000000000000000000000000000000000000000000005)
     end
         else
-            _G.MoreLuck = false;
+            getgenv().MoreLuck = false;
         end
     end)
 
     -- Tapping Legends X
     MainTappingX:NewToggle("Rainbow Chance", "auto buys rainbow Chance", function(state)
         if state then
-            _G.RainBowChance = true;
+            getgenv().RainBowChance = true;
 
-    while _G.RainBow == true do
+    while getgenv().RainBow == true do
         
     local args = {
         [1] = "Tokens",
@@ -2160,16 +2431,16 @@ if game.PlaceId == 8750997647 then
         wait(0.0000000000000000000000000000000000000000000000000000000000000000000000000000000000005)
     end
         else
-            _G.RainBowChance = false;
+            getgenv().RainBowChance = false;
         end
     end)
 
     -- Tapping Legends X
     MainTappingX:NewToggle("More Rubies", "auto buys ruby upgrade", function(state)
         if state then
-            _G.MoreRuby = true;
+            getgenv().MoreRuby = true;
 
-    while _G.MoreRuby == true do
+    while getgenv().MoreRuby == true do
         
     local args = {
         [1] = "Tokens",
@@ -2180,16 +2451,16 @@ if game.PlaceId == 8750997647 then
         wait(0.0000000000000000000000000000000000000000000000000000000000000000000000000000000000005)
     end
         else
-            _G.MoreRuby = false;
+            getgenv().MoreRuby = false;
         end
     end)
 
     -- Tapping Legends X
     MainTappingX:NewToggle("Chest Chance", "auto buys chest Chance", function(state)
         if state then
-            _G.ChestChance = true;
+            getgenv().ChestChance = true;
 
-    while _G.ChestChance == true do
+    while getgenv().ChestChance == true do
         
     local args = {
         [1] = "Tokens",
@@ -2200,16 +2471,16 @@ if game.PlaceId == 8750997647 then
         wait(0.0000000000000000000000000000000000000000000000000000000000000000000000000000000000005)
     end
         else
-            _G.ChestChance = false;
+            getgenv().ChestChance = false;
         end
     end)
 
     -- Tapping Legends X
     MainTappingX:NewToggle("Pet Level", "auto buys pet level", function(state)
         if state then
-            _G.PetLevel = true;
+            getgenv().PetLevel = true;
 
-    while _G.PetLevel == true do
+    while getgenv().PetLevel == true do
         
     local args = {
         [1] = "Tokens",
@@ -2220,16 +2491,16 @@ if game.PlaceId == 8750997647 then
         wait(0.0000000000000000000000000000000000000000000000000000000000000000000000000000000000005)
     end
         else
-            _G.PetLevel = false;
+            getgenv().PetLevel = false;
         end
     end)
 
     -- Tapping Legends X
     MainTappingX:NewToggle("EnchantBonus", " auto buys EnchantBonus", function(state)
         if state then
-            _G.EnchantBonus = true;
+            getgenv().EnchantBonus = true;
 
-    while _G.EnchantBonus == true do
+    while getgenv().EnchantBonus == true do
         
     local args = {
         [1] = "Tokens",
@@ -2240,16 +2511,16 @@ if game.PlaceId == 8750997647 then
         wait(0.0000000000000000000000000000000000000000000000000000000000000000000000000000000000005)
     end
         else
-            _G.EnchantBonus = false;
+            getgenv().EnchantBonus = false;
         end
     end)
 
     -- Tapping Legendsm X
     MainTappingX:NewToggle("Extract Rubies", "Auto Extract Rubies", function(state)
         if state then
-            _G.AutoRubies = true;
+            getgenv().AutoRubies = true;
             
-    while _G.AutoRubies == true do
+    while getgenv().AutoRubies == true do
         local args = {
             [1] = 2
         }
@@ -2258,16 +2529,16 @@ if game.PlaceId == 8750997647 then
         wait(0.0000000000000000000000000000000000000000000000000000000000000000000000000000000000005)
     end
         else
-            _G.AutoRubies = false;
+            getgenv().AutoRubies = false;
         end
     end)
 
     -- Tapping Legends X
     MainTappingX:NewToggle("Extract Taps", "Auto Extract Taps", function(state)
         if state then
-            _G.AutoTap = true;
+            getgenv().AutoTap = true;
             
-    while _G.AutoTap == true do
+    while getgenv().AutoTap == true do
         local args = {
             [1] = 1
         }
@@ -2276,7 +2547,7 @@ if game.PlaceId == 8750997647 then
         wait(0.0000000000000000000000000000000000000000000000000000000000000000000000000000000000005)
     end
         else
-            _G.AutoRubies = false;
+            getgenv().AutoRubies = false;
         end
     end)
 
@@ -2286,6 +2557,8 @@ if game.PlaceId == 8750997647 then
 end
 ---------------------------------------------------------------------------------------------------------------------------------------
     if game.PlaceId == 6872265039 then
+        GameSup()
+        Notification.new("info", "Game: Bedwars", "Enjoy Hacking "..getgenv().Emoji, true, 3)
         local BedWars = Window:NewTab("BedWars")
         local MainBedWars = BedWars:NewSection("Bedwars Scripts")
         MainBedWars:NewButton("Vape V4", "loads Vape V4 Script", function()
@@ -2310,13 +2583,15 @@ end
 end
 ---------------------------------------------------------------------------------------------------------------------------------------
     if game.PlaceId == 9285238704 then
+        GameSup()
+        Notification.new("info", "Game: Rebirth Legends X", "Enjoy Hacking "..getgenv().Emoji, true, 3)
         local RaceClicker = Window:NewTab("Race Clicker")
         local MainRaceClick = RaceClicker:NewSection("Games")
         MainRaceClick:NewToggle("AutoFarm", "auto farms for you", function(state)
             if state then
-                _G.RaceFarm = true;
+                getgenv().RaceFarm = true;
 
-                while _G.RaceFarm == true do
+                while getgenv().RaceFarm == true do
                                         --settings (make first two values values bigger if script often bugs for you)
                     local delay1 = getgenv().Delay2
                     local delay2 = getgenv().Delay
@@ -2339,7 +2614,7 @@ end
                     end
                 end
             else
-                _G.RaceFarm = false;
+                getgenv().RaceFarm = false;
             end
         end)
 
@@ -2359,6 +2634,8 @@ end
     end
 ---------------------------------------------------------------------------------------------------------------------------------------
     if game.PlaceId == 3527629287 then
+        GameSup()
+        Notification.new("info", "Game: Rebirth Legends X", "Enjoy Hacking "..getgenv().Emoji, true, 3)
         local PaintBall = Window:NewTab("Big Paint Ball")
         local MainPaint = PaintBall:NewSection("Main")
 
@@ -2381,310 +2658,20 @@ end
 ---------------------------------------------------------------------------------------------------------------------------------------
 
 if game.PlaceId == 286090429 then
+    GameSup()
+    Notification.new("info", "Game: Rebirth Legends X", "Enjoy Hacking "..getgenv().Emoji, true, 3)
     local Arsenal = Window:NewTab("Arsenal")
     local MainArsenal = Arsenal:NewSection("Main")
 
     MainArsenal:NewButton("Aimbot + FOV Circle", "Self Explains", function()
-local Players = game:GetService("Players")
-local LocalPlayer = Players.LocalPlayer
-local Camera = workspace.CurrentCamera
-local RunService = game:GetService("RunService")
-local UserInputService = game:GetService("UserInputService")
-local TweenService = game:GetService("TweenService")
-local Holding = false
-
--- AIMBOT SETTINGS
-
-getgenv().AimbotEnabled = true -- true = Aimbot On/false = Aimbot Off
-getgenv().TeamCheck = true -- true = Checks team/false = Doesn't check team
-getgenv().AimPart = "Head" -- Part to aim at
-getgenv().Sensitivity = 0 -- Lock on to player delay
-
--- FOV CIRCLE SETTINGS
-
-getgenv().CircleSides = 64
-getgenv().CircleColor = Color3.fromRGB(255, 255, 255) -- circle color
-getgenv().CircleTransparency = 0.7 -- Circle transparency
-getgenv().CircleRadius = 80
-getgenv().CircleFilled = false -- Circle fill
-getgenv().CircleVisible = true -- Circle visible
-getgenv().CircleThickness = 0
-
-local FOVCircle = Drawing.new("Circle")
-FOVCircle.Position = Vector2.new(Camera.ViewportSize.X / 2, Camera.ViewportSize.Y / 2)
-FOVCircle.Radius = getgenv().CircleRadius
-FOVCircle.Filled = getgenv().CircleFilled
-FOVCircle.Color = getgenv().CircleColor
-FOVCircle.Visible = getgenv().CircleVisible
-FOVCircle.Radius = getgenv().CircleRadius
-FOVCircle.Transparency = getgenv().CircleTransparency
-FOVCircle.NumSides = getgenv().CircleSides
-FOVCircle.Thickness = getgenv().CircleThickness
-
-local function GetClosestPlayer()
-local MaximumDistance = getgenv().CircleRadius
-local Target = nil
-
-for _, v in next, Players:GetPlayers() do
-if v.Name ~= LocalPlayer.Name then
-    if getgenv().TeamCheck == true then
-        if v.team ~= LocalPlayer.Team then
-            if v.Character ~= nil then
-                if v.Character:FindFirstChild("HumanoidRootPart") ~= nil then
-                    if v.Character:FindFirstChild("Humanoid") ~= nil and v.Character:FindFirstChild("Humanoid").Health ~= 0 then
-                        local ScreenPoint = Camera:WorldToScreenPoint(v.Character:WaitForChild("HumanoidRootPart", math.huge).Position)
-                        local VectorDistance = (Vector2.new(UserInputService:GetMouseLocation().X, UserInputService:GetMouseLocation().Y) - Vector2.new(ScreenPoint.X, ScreenPoint.Y)).Magnitude
-
-                        if VectorDistance < MaximumDistance then
-                            Target = v
-                        end
-                    end
-                end
-            end
-        end
-    else
-        if v.Character ~= nil then
-                if v.Character:FindFirstChild("HumanoidRootPart") ~= nil then
-                    if v.Character:FindFirstChild("Humanoid") ~= nil and v.Character:FindFirstChild("Humanoid").Health ~= 0 then
-                        local ScreenPoint = Camera:WorldToScreenPoint(v.Character:WaitForChild("HumanoidRootPart", math.huge).Position)
-                        local VectorDistance = (Vector2.new(UserInputService:GetMouseLocation().X, UserInputService:GetMouseLocation().Y) - Vector2.new(ScreenPoint.X, ScreenPoint.Y)).Magnitude
-
-                        if VectorDistance < MaximumDistance then
-                            Target = v
-                        end
-                    end
-                end
-            end
-        end
-    end
-end
-return Target
-end
-
-UserInputService.InputBegan:Connect(function(Input)
-if Input.UserInputType == Enum.UserInputType.MouseButton2 then
-Holding = true
-end
-end)
-
-UserInputService.InputEnded:Connect(function(Input)
-if Input.UserInputType == Enum.UserInputType.MouseButton2 then
-Holding = false
-end
-end)
-
-RunService.RenderStepped:Connect(function()
-FOVCircle.Position = Vector2.new(UserInputService.GetMouseLocation().X, UserInputService:GetMouseLocation().Y)
-FOVCircle.Radius = getgenv().CircleRadius
-FOVCircle.Filled = getgenv().CircleFilled
-FOVCircle.Color = getgenv().CircleColor
-FOVCircle.Visible = getgenv().CircleVisible
-FOVCircle.Radius = getgenv().CircleRadius
-FOVCircle.Transparency = getgenv().CircleTransparency
-FOVCircle.NumSides = getgenv().CircleSides
-FOVCircle.Thickness = getgenv().CircleThickness
-
-if Holding == true and getgenv().AimbotEnabled == true then
-TweenService:Create(Camera, TweenInfo.new(getgenv().Sensitivity, Enum.EasingStyle.Sine, Enum.EasingDirection.Out), {CFrame = CFrame.new(Camera.CFrame.Position, GetClosestPlayer().Character{getgenv().AimPart}.Position)}):Play()
-end
-end)
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/ScRiPtsTerS/Aimbot/main/Aimbot"))()
     end)   
-    
-    MainArsenal:NewLabel("Set values for both textboxes,then GunMods")
-
     MainArsenal:NewButton("Gun Mods", "shoot very fast", function()
-        local replicationstorage = game.ReplicatedStorage
-        for i, v in pairs(replicationstorage.Weapons:GetDescendants()) do
-           if v.Name == "Auto" then
-               v.Value = true
-           end
-           if v.Name == "RecoilControl" then
-               v.Value = 0
-           end
-           if v.Name == "MaxSpread" then
-               v.Value = 0
-           end
-           if v.Name == "ReloadTime" then
-              v.Value = 0.05
-           end
-           if v.Name == "FireRate" then
-               v.Value = 0.05
-           end
-           if v.Name == "Crit" then
-               v.Value = 100000
-           end
-           if v.Name == "StoredAmmo" then
-               v.Value = 300
-           end
-           if v.Name == "Range" then
-                   v.Value = 100000
-           end
-           if v.Name == "EquipTime" then
-               v.Value = 0
-           end
-           if v.Name == "Speed%" then
-                  v.Value = 0
-           end
-           if v.Name == "FM" then
-                  v.Value = 1000
-           end
-           if v.Name == "DelayedFiring" then
-                  v.Value = 0.05
-           end
-           if v.Name == "SelfDamage" then
-                  v.Value = 0
-           end
-           if v.Name == "BlastRadius" then
-                  v.Value = 100000
-           end
-           if v.Name == "Speed" then
-                  v.Value = 10000
-           end
-           if v.Name == "DMG" then
-                  v.Value = 10000
-           end
-           if v.Name == "ChargeTime" then
-                  v.Value = 0
-           end
-           if v.Name == "MAXDMG" then
-                  v.Value = 10000
-           end
-           if v.Name == "MaxSpeed" then
-                  v.Value = 10000
-           end
-           if v.Name == "OverCharge" then
-                  v.Value = 0
-           end
-           if v.Name == "SFireRate" then
-                  v.Value = 0.05
-           end
-           if v.Name == "BulletSpeed" then
-                  v.Value = 10000
-           end
-           if v.Name == "ABurst" then
-                  v.Value = 10000
-           end
-           if v.Name == "BFireRate" then
-                  v.Value = 0.05
-           end
-           if v.Name == "EReloadTime" then
-                  v.Value = 0.05
-           end
-           if v.Name == "HPonHit" then
-                  v.Value = 10000
-           end
-           if v.Name == "Falloff" then
-                  v.Value = 0
-           end
-           if v.Name == "AReload" then
-                  v.Value = 0.05
-           end
-           if v.Name == "evaporate" then
-                  v.Value = 10000
-           end
-           if v.Name == "DoubleJump" then
-                  v.Value = 100
-           end
-           if v.Name == "JumpBonus" then
-                  v.Value = 1000
-           end
-           if v.Name == "SReload" then
-                  v.Value = 0.05
-           end
-           if v.Name == "EReload" then
-                  v.Value = 0
-           end
-           if v.Name == "FireRate2" then
-                  v.Value = 0.05
-           end
-           if v.Name == "DMG2" then
-                  v.Value = 10000 
-           end
-           if v.Name == "FuseTime" then
-                  v.Value = 0
-           end
-           if v.Name == "ReloadTime_org" then
-                  v.Value = 0.05
-           end
-           if v.Name == "DamageBonus" then
-                  v.Value = 10000
-           end
-           if v.Name == "EngulfTarget" then
-                  v.Value = true
-           end
-        end            
+        loadstring(game:HttpGet("https://pastebin.com/raw/VZmwxR47"))()           
     end) 
 
     MainArsenal:NewButton("Slient Aim", "kinda of bad", function()
---> VARIABLES <--
-local plrs = game:GetService("Players")
-local plr = plrs.LocalPlayer
-local mouse = plr:GetMouse()
-local camera = game:GetService("Workspace").CurrentCamera
-
---> FUNCTIONS <--
-function notBehindWall(target)
-local ray = Ray.new(plr.Character.Head.Position, (target.Position - plr.Character.Head.Position).Unit * 300)
-local part, position = game:GetService("Workspace"):FindPartOnRayWithIgnoreList(ray, {plr.Character}, false, true)
-if part then
-local humanoid = part.Parent:FindFirstChildOfClass("Humanoid")
-if not humanoid then
-    humanoid = part.Parent.Parent:FindFirstChildOfClass("Humanoid")
-end
-if humanoid and target and humanoid.Parent == target.Parent then
-    local pos, visible = camera:WorldToScreenPoint(target.Position)
-    if visible then
-        return true
-    end
-end
-end
-end
-
-function getPlayerClosestToMouse()
-local target = nil
-local maxDist = 100
-for _,v in pairs(plrs:GetPlayers()) do
-if v.Character then
-    if v.Character:FindFirstChild("Humanoid") and v.Character.Humanoid.Health ~= 0 and v.Character:FindFirstChild("HumanoidRootPart") and v.TeamColor ~= plr.TeamColor then
-        local pos, vis = camera:WorldToViewportPoint(v.Character.HumanoidRootPart.Position)
-        local dist = (Vector2.new(mouse.X, mouse.Y) - Vector2.new(pos.X, pos.Y)).magnitude
-        if dist < maxDist and vis then
-            local torsoPos = camera:WorldToViewportPoint(v.Character.HumanoidRootPart.Position)
-            local torsoDist = (Vector2.new(mouse.X, mouse.Y) - Vector2.new(torsoPos.X, torsoPos.Y)).magnitude
-            local headPos = camera:WorldToViewportPoint(v.Character.Head.Position)
-            local headDist = (Vector2.new(mouse.X, mouse.Y) - Vector2.new(headPos.X, headPos.Y)).magnitude
-            if torsoDist > headDist then
-                if notBehindWall(v.Character.Head) then
-                    target = v.Character.Head
-                end
-            else
-                if notBehindWall(v.Character.HumanoidRootPart) then
-                    target = v.Character.HumanoidRootPart
-                end
-            end
-            maxDist = dist
-        end
-    end
-end
-end
-return target
-end
-
---> Hooking to the remote <--
-local gmt = getrawmetatable(game)
-setreadonly(gmt, false)
-local oldNamecall = gmt.__namecall
-
-gmt.__namecall = newcclosure(function(self, ...)
-local Args = {...}
-local method = getnamecallmethod()
-if tostring(self) == "HitPart" and tostring(method) == "FireServer" then
-Args[1] = getPlayerClosestToMouse()
-Args[2] = getPlayerClosestToMouse().Position
-return self.FireServer(self, unpack(Args))
-end
-return oldNamecall(self, ...)
-end)
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/ScRiPtsTerS/Slient/main/Aim", true))()
     end)
 
     MainArsenal:NewButton("Esp", "See Players through walls", function ()
@@ -2698,72 +2685,16 @@ end
 
 ---------------------------------------------------------------------------------------------------------------------------------------
 
-if game.PlaceId ~= 123 then
-    a = false;
+if getgenv().Supported == false then
+    getgenv().notsupported = true
+elseif getgenv().Supported == true then
+	getgenv().notsupported = false
 end
 
-if a == false then
-    local BedwarsManual = Window:NewTab("Bedwars loader?")
-    local MainBedWarsManual = BedwarsManual:NewSection("Are you you in a Bedwars match")
-    MainBedWarsManual:NewButton("Yes", "loads the bedwars script", function()
-    wait(cooldown)
-    cooldown = 0.5
-    local Bedwars = Window:NewTab("Bedwars")
-    local MainBedWars = Bedwars:NewSection("Main")
-                MainBedWars:NewButton("Vape Private", "loads Sape Script", function()
-                    loadstring(game:HttpGet("https://raw.githubusercontent.com/vodxn/sape/main/Initiate.lua"))()
-                end)
-        
-                MainBedWars:NewButton("Rektsky", "loads Rektsky Script", function()
-                    loadstring(game:HttpGet("https://raw.githubusercontent.com/8pmX8/rektsky4roblox/main/mainscript.lua"))()
-                end)
-        
-                MainBedWars:NewButton("Future", "loads Future Script", function()
-                    loadstring(game:HttpGet('https://raw.githubusercontent.com/joeengo/Future/main/loadstring.lua', true))()
-                end)
-
-                
-                cooldown = 999999
-                cooldown2 = 999999
-            end)
-
-    MainBedWarsManual:NewButton("No", "game is not Supported", function()
-        wait(cooldown2)
-        cooldown2 = 0.5
-            --Main
-local Main = Window:NewTab("Player")
-local MainSection = Main:NewSection("Main")
-
---Speed Slider
-MainSection:NewSlider("WalkSpeed", "Makes you Walk/Run higher", 500, 0, function(s) -- 500 (MaxValue) | 0 (MinValue)
-    game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = s
-end)
-
---Jump Slider
-MainSection:NewSlider("JumpPower", "Makes you jump higher", 500, 0, function(s) -- 500 (MaxValue) | 0 (MinValue)
-    game.Players.LocalPlayer.Character.Humanoid.JumpPower = s
-end)
-
---Infinte Jump Button
-MainSection:NewButton("infinte Jump", "makes you jump infinite times", function()
-    loadstring(game:HttpGet('https://pastebin.com/raw/JZYc0v9r'))()
-end)
-
---Fake Kick
-MainSection:NewButton("Fake Kick/Ban", "Makes you get Fake Kicked", function()
-    game.Players.LocalPlayer:Kick(getgenv().KickMessage)
-end)
-MainSection:NewTextBox("Edit KickMessage", "Don't put too many words", function(txt)
-    getgenv().KickMessage = txt
-end)
-
-ToggleGui()
-JoinDiscord()
-SupportedGames()
-
-        cooldown2 = 999999
-        cooldown = 999999
-    end)
+if getgenv().notsupported == true then
+    Destroy()
+    wait(1)
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/ScRiPtsTerS/NotSupported/main/GameNotSupport3", true))()
 end
 
     --[[detect PlaceId
@@ -2772,9 +2703,15 @@ print(gameid)
 ]]
 
 ---------------------------------------------------------------------------------------------------------------------------------------
+-- Incase they execute script again and both emojis were nil or not there
+getgenv().Hub_Emoji = nil
+getgenv().Notifi_Emoji = nil
+print("🔨📜")
+print("Both Emojis have been reset.")
+print("Incase Emojis get glitched.")
+print("🔧📏 ")
 
 -- Supported Games
 wait(1)
 PrintGames()
-
 ---------------------------------------------------------------------------------------------------------------------------------------
