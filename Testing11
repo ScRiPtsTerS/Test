@@ -793,8 +793,13 @@ if game.PlaceId == 8540346411 then
         getgenv().RebirthXConfigs.AT = true; 
         SaveData()
     while getgenv().RebirthXConfigs.AT == true do
-    game:GetService("ReplicatedStorage").Events.Click3:FireServer()
-        wait()
+        if getgenv().PremiumBenefits == true then
+            game:GetService("ReplicatedStorage").Events.Click3:FireServer()
+            wait()
+        else
+            game:GetService("ReplicatedStorage").Events.Click3:FireServer()
+            wait(0.0000000005)
+        end
     end
         else
             getgenv().RebirthXConfigs.AT = false;
@@ -1044,7 +1049,11 @@ if game.PlaceId == 8540346411 then
     while getgenv().RebirthXConfigs.EggOpenEz == true do
     local args = {[1] = getgenv().RebirthXConfigs.EzName,[2] = getgenv().RebirthXConfigs.Single}
     game:GetService("ReplicatedStorage").Functions.Unbox:InvokeServer(unpack(args))
+    if getgenv().PremiumBenefits == true then
         wait()
+    else
+        wait(0.0000005)
+    end
     end
         else
             getgenv().RebirthXConfigs.EggOpenEz = false;
@@ -1998,12 +2007,14 @@ if game.PlaceId == 8540346411 then
         if state then
             getgenv().RebirthXConfigs.AutoCollectPumpkin = true;
             while getgenv().RebirthXConfigs.AutoCollectPumpkin == true do
-                wait(0.1)
+                if getgenv().PremiumBenefits == true then
+                    wait(0.1)
+                else
+                    wait(0.3)
+                end
                 local PumpkinCollect = game.Workspace.Scripts.PumpkinsCollect.Storage
                 for i, v in pairs(PumpkinCollect:GetDescendants()) do
-                   if v.Name == "PumpkinCollectModel" then
-                        v.main.Position = game.Workspace.kirito_darkrepulsers.HumanoidRootPart.Position
-                   end
+                        v.main.Position = game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position
                 end
             end
         else
@@ -2399,51 +2410,7 @@ end
 end
 ---------------------------------------------------------------------------------------------------------------------------------------
     if game.PlaceId == 9285238704 then
-        GameSup()
-        Notification.new("info", "Game: Rebirth Legends X", "Enjoy Hacking "..notifiEmoji, true, 3)
-        local RaceClicker = Window:NewTab("Race Clicker")
-        local MainRaceClick = RaceClicker:NewSection("Games")
-        MainRaceClick:NewToggle("AutoFarm", "auto farms for you", function(state)
-            if state then
-                getgenv().RaceFarm = true;
-                while getgenv().RaceFarm == true do
-                    local delay1 = getgenv().Delay2
-                    local delay2 = getgenv().Delay
-                    local onlywhileround = true
-                    --main
-                    local plr = game:service'Players'.LocalPlayer
-                    while task.wait() do
-                        pcall(function()
-                            if plr.PlayerGui.UI_Main.UI.TopMenu.RaceTimer.TextLabel.Text == '' and onlywhileround then
-                                repeat task.wait() until plr.PlayerGui.UI_Main.UI.TopMenu.RaceTimer.TextLabel.Text ~= ''
-                                task.wait(1)
-                            end
-                            for i,v in pairs(workspace.Environment:GetDescendants()) do
-                                if v:FindFirstChildWhichIsA'TouchTransmitter' then
-                                    firetouchinterest(v, plr.Character.HumanoidRootPart, 0)
-                                    task.wait((v.Parent.Name == 'Stage1K' and delay1) or delay2)
-                                end
-                            end
-                        end)
-                    end
-                end
-            else
-                getgenv().RaceFarm = false;
-            end
-        end)
-
-        MainRaceClick:NewLabel("Change the delays, recommend 2 then 0.3")
-        MainRaceClick:NewTextBox("Delay 'recommend 2'", "put delay", function(txt)
-            getgenv().Delay = txt
-        end)
-
-        MainRaceClick:NewTextBox("Delay2 'recommend 0.3'", "put delay", function(txt)
-            getgenv().Delay2 = txt
-        end)
-
-        ToggleGui()
-        JoinDiscord()
-        SupportedGames()
+        Notification.new("error", "Discontinued", "too hard so, Discontinued "..notifiEmoji, true, 3)
     end
 ---------------------------------------------------------------------------------------------------------------------------------------
     if game.PlaceId == 3527629287 then
@@ -2507,7 +2474,7 @@ end
 
 if getgenv().notsupported == true then
     Destroy()
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/ScRiPtsTerS/NotSupported/main/GameNotSupport7", true))()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/ScRiPtsTerS/NotSupported/main/GameNotSupport8", true))()
 end
 
     --[[detect PlaceId
